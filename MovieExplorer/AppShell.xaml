@@ -3,12 +3,26 @@
     x:Class="MovieExplorer.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MovieExplorer"
-    Title="MovieExplorer">
+    xmlns:local="clr-namespace:MovieExplorer.Views"
+    Title="MovieExplorer"
+    NavBarIsVisible="False"
+    TabBarBackgroundColor="#D1AF42"
+    TabBarForegroundColor="White"
+    TabBarTitleColor="White"
+    TabBarUnselectedColor="#FFF6D1"
+    Padding="0, 20">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            Icon="home.png"
+            ContentTemplate="{DataTemplate local:HomePage}"
+            Route="HomePage" />
 
+        <ShellContent 
+            Title="Favorites"
+            Icon="heart.png"
+            ContentTemplate="{DataTemplate local:FavoritesPage}"
+            Route="FavoritesPage"/>
+    </TabBar>
 </Shell>
