@@ -8,4 +8,6 @@ public class Movie
     public string director { get; set; }
     public double rating { get; set; }
     public string emoji { get; set; }
+    
+    public string GenreText => string.Join(", ", genre);
 }
