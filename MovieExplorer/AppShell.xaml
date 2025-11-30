@@ -6,10 +6,10 @@
     xmlns:local="clr-namespace:MovieExplorer.Views"
     Title="MovieExplorer"
     NavBarIsVisible="False"
-    TabBarBackgroundColor="#D1AF42"
-    TabBarForegroundColor="White"
-    TabBarTitleColor="White"
-    TabBarUnselectedColor="#FFF6D1"
+    TabBarBackgroundColor="{StaticResource ElementsLight}"
+    TabBarForegroundColor="{StaticResource White}"
+    TabBarTitleColor="{StaticResource White}"
+    TabBarUnselectedColor="{StaticResource BackgroundColorLight}"
     Padding="0, 20">
 
     <TabBar>

@@ -71,6 +71,9 @@
       <MauiXaml Update="Views\FavoritesPage.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
+      <MauiXaml Update="Views\Settings.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
     </ItemGroup>
 
     <ItemGroup>
@@ -80,6 +83,10 @@
       </Compile>
       <Compile Update="Views\FavoritesPage.xaml.cs">
         <DependentUpon>FavoritesPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Settings.xaml.cs">
+        <DependentUpon>Settings.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

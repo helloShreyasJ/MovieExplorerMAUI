@@ -1,24 +1,27 @@
-﻿    using Microsoft.Extensions.Logging;
+﻿using MovieExplorer.Services;
+using MovieExplorer.ViewModels;
+using MovieExplorer.Views;
 
-    namespace MovieExplorer;
+namespace MovieExplorer;
 
-    public static class MauiProgram
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
-            
-            builder.Services.AddLogging();
-            // MovieListingService added
-            builder.Services.AddSingleton<MovieListingService>();
-            
-            return builder.Build();
-        }
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("Roboto-Regular.ttf", "RobotoRegular");
+                fonts.AddFont("Roboto-Bold.ttf", "RobotoBold");
+            });
+        
+        builder.Services.AddLogging();
+        // MovieListingService added
+        builder.Services.AddSingleton<MovieListingService>();
+        builder.Services.AddSingleton<MovieViewModel>();
+        builder.Services.AddSingleton<HomePage>();
+        return builder.Build();
     }
+}
