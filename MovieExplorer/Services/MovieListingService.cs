@@ -1,6 +1,7 @@
 using System.Text.Json;
+using MovieExplorer.Models;
 using Path = System.IO.Path;
-namespace MovieExplorer;
+namespace MovieExplorer.Services;
 
 public class MovieListingService
 {
@@ -30,12 +31,12 @@ public class MovieListingService
         }
     }
     
-    public async Task<List<MovieListing>> GetMovieListing()
+    public async Task<List<Movie>> GetMovieListing()
     {
         await EnsureMovieFileExistsAsync();
         string json = File.ReadAllText(_localFilePath);
         System.Diagnostics.Debug.WriteLine(json);
-        return JsonSerializer.Deserialize<List<MovieListing>>(json) ?? new List<MovieListing>();
+        return JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
     }
     
     public async Task EnsureMovieFileExistsAsync()
