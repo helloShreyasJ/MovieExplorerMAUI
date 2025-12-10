@@ -7,13 +7,13 @@
              x:Class="MovieExplorer.Views.HomePage" x:DataType="viewModels:MovieViewModel">
     <Grid RowDefinitions="*,2*,12*">
         
-        <!-- TODO: logo -->
+        <!-- logo -->
         <Image Source="logo_light.png"/>
         
-        <!-- TODO: search -->
+        <!-- searchbar -->
         <templates:SearchBarTemplate Grid.Row="1"/>
         
-        <!-- the listings -->
+        <!-- listings -->
         <CollectionView ItemsSource="{Binding Movies}" Grid.Row="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>

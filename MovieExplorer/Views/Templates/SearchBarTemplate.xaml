@@ -18,13 +18,13 @@
 
             <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
 
-                <!-- Placeholder -->
+                <!-- placeholder -->
                 <Label Text="Search"
                        FontSize="18"
                        TextColor="#555"
                        VerticalOptions="Center"/>
 
-                <!-- Search icon -->
+                <!-- search icon -->
                 <Image Grid.Column="1"
                        Source="search.png"
                        HeightRequest="22"
@@ -32,7 +32,6 @@
                        VerticalOptions="Center"
                        Margin="10,0,0,0"/>
             </Grid>
-
         </Border>
     </Border>
 </ContentView>
