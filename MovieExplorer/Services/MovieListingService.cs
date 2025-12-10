@@ -22,7 +22,7 @@ public class MovieListingService
         try
         {
             string movieList = await _client.GetStringAsync(MovieListUrl);
-            File.WriteAllText(_localFilePath, movieList); //save the file locally
+            File.WriteAllText(_localFilePath, movieList); //save the file locally for when theres no wifi
         }
         catch (Exception e)
         {

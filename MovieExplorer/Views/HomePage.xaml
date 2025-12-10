@@ -5,12 +5,21 @@
              xmlns:templates="clr-namespace:MovieExplorer.Views.Templates"
              xmlns:viewModels="clr-namespace:MovieExplorer.ViewModels"
              x:Class="MovieExplorer.Views.HomePage" x:DataType="viewModels:MovieViewModel">
-    
-    <CollectionView ItemsSource="{Binding Movies}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <templates:MovieListingTemplate />
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <Grid RowDefinitions="*,2*,12*">
+        
+        <!-- TODO: logo -->
+        <Image Source="logo_light.png"/>
+        
+        <!-- TODO: search -->
+        <templates:SearchBarTemplate Grid.Row="1"/>
+        
+        <!-- the listings -->
+        <CollectionView ItemsSource="{Binding Movies}" Grid.Row="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <templates:MovieListingTemplate/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>

@@ -3,11 +3,36 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MovieExplorer.Views.Templates.SearchBarTemplate">
-    <Frame BackgroundColor="{StaticResource ElementsLight}"
-           CornerRadius="15">
-        <HorizontalStackLayout BackgroundColor="{StaticResource BackgroundColorLight}">
-            <Entry/>
-            <Image Source="search.png"/>
-        </HorizontalStackLayout>
-    </Frame>
+    <Border
+        Margin="12"
+        Stroke="{StaticResource ElementsLight}"
+        StrokeThickness="1"
+        Padding="10"
+        StrokeShape="RoundRectangle 12">
+
+        <Border
+            BackgroundColor="White"
+            StrokeThickness="0"
+            Padding="15"
+            StrokeShape="RoundRectangle 20">
+
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+
+                <!-- Placeholder -->
+                <Label Text="Search"
+                       FontSize="18"
+                       TextColor="#555"
+                       VerticalOptions="Center"/>
+
+                <!-- Search icon -->
+                <Image Grid.Column="1"
+                       Source="search.png"
+                       HeightRequest="22"
+                       WidthRequest="22"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"/>
+            </Grid>
+
+        </Border>
+    </Border>
 </ContentView>
