@@ -5,12 +5,12 @@
              xmlns:models="clr-namespace:MovieExplorer.Models"
              x:Class="MovieExplorer.Views.Templates.MovieListingTemplate"
              x:DataType="models:Movie">
-    <Frame
+    <Border
         Margin="12"
         Padding="20"
-        CornerRadius="25"
-        HasShadow="True"
-        BackgroundColor="#F6F7FB">
+        StrokeShape="RoundRectangle 10"
+        StrokeThickness="1"
+        BackgroundColor="{StaticResource BackgroundColorLight}">
         <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto">
 
             
@@ -30,13 +30,13 @@
             </StackLayout>
 
             <!-- rating -->
-            <Frame
+            <Border
                 Grid.Column="1"
                 Grid.Row="0"
                 HeightRequest="110"
                 WidthRequest="110"
-                CornerRadius="60"
-                BackgroundColor="#64C3EB"
+                StrokeShape="RoundRectangle 60"
+                BackgroundColor="{StaticResource ElementsLight}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 Padding="0">
@@ -48,7 +48,7 @@
                     FontSize="32"
                     TextColor="Black"
                     FontAttributes="Bold"/>
-            </Frame>
+            </Border>
 
             <!-- genre (finally works)-->
             <HorizontalStackLayout
@@ -74,5 +74,5 @@
                 TextColor="Black"
                 FontSize="20" />
         </Grid>
-    </Frame>
+    </Border>
 </ContentView>
