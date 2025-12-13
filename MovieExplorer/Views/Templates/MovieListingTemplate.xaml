@@ -50,7 +50,7 @@
                     FontAttributes="Bold"/>
             </Border>
 
-            <!-- genre (finally works)-->
+            <!-- genre -->
             <HorizontalStackLayout
                 Grid.Column="0"
                 Grid.Row="1"

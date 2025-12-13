@@ -9,12 +9,26 @@ namespace MovieExplorer.ViewModels;
 
 public class MovieViewModel : INotifyPropertyChanged
 {
+    private readonly MovieListingService _listingService; // loads movies from donnys github
     private Movie _selectedMovie;
-    private readonly MovieListingService _listingService;
+    private List<Movie> _allMovies = new List<Movie>(); // not bound to UI. stores ALL movies
+    public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>(); // bound to UI. shows filtered movies
+    private string _searchText = string.Empty;
 
-    // Initialize the collection so it's never null
-    public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>();
-
+    public string SearchText
+    {
+        get { return _searchText; }
+        set
+        {
+            if (_searchText == value)
+            {
+                return;
+            }
+            _searchText = value;
+            OnPropertyChanged();
+            ApplyFilter();
+        }
+    }
     public Movie SelectedMovie
     {
         get => _selectedMovie;
@@ -31,30 +45,47 @@ public class MovieViewModel : INotifyPropertyChanged
     public MovieViewModel(MovieListingService listingService)
     {
         _listingService = listingService;
-
-        // Start loading the movies but don't block the constructor.
-        // We intentionally ignore the returned Task here — optionally you can await this
-        // from a caller or expose an initialization method.
-        _ = LoadMoviesAsync();
+        _ = LoadMoviesAsync(); // start loading movies
     }
 
     private async Task LoadMoviesAsync()
     {
         try
         {
+            // get movies from service
             var movies = await _listingService.GetMovieListing();
-
-            // Update the ObservableCollection (UI will be notified automatically)
-            Movies.Clear();
-            foreach (var m in movies)
-                Movies.Add(m);
-
-            Debug.WriteLine($"Loaded {Movies.Count} movies into ViewModel.");
+            _allMovies = movies.ToList();
+            ApplyFilter(); // if search text contains something match immediately
         }
         catch (Exception ex)
         {
             Debug.WriteLine($"Error loading movies: {ex}");
-            // optionally surface an error property for the UI here
+        }
+    }
+
+    public void ApplyFilter()
+    {
+        Movies.Clear();
+
+        if (string.IsNullOrWhiteSpace(SearchText))
+        {
+            foreach (Movie movie in _allMovies)
+            {
+                Movies.Add(movie);
+            }
+
+            return;
+        }
+
+        foreach (Movie movie in _allMovies)
+        {
+            bool titleMatches =
+                movie.title.Contains(SearchText, StringComparison.OrdinalIgnoreCase);
+
+            if (titleMatches)
+            {
+                Movies.Add(movie);
+            }
         }
     }
 

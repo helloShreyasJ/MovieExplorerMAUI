@@ -4,17 +4,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:templates="clr-namespace:MovieExplorer.Views.Templates"
              xmlns:viewModels="clr-namespace:MovieExplorer.ViewModels"
-             x:Class="MovieExplorer.Views.HomePage" x:DataType="viewModels:MovieViewModel">
+             x:Class="MovieExplorer.Views.HomePage" x:DataType="viewModels:MovieViewModel"
+             BackgroundColor="{StaticResource White}">
     <Grid RowDefinitions="*,2*,12*">
         
         <!-- logo -->
         <Image Source="logo_light.png"/>
         
         <!-- searchbar -->
-        <templates:SearchBarTemplate Grid.Row="1"/>
+        <templates:SearchBarTemplate
+            Grid.Row="1"/>
         
         <!-- listings -->
-        <CollectionView ItemsSource="{Binding Movies}" Grid.Row="2">
+        <CollectionView ItemsSource="{Binding Movies}"
+                        Grid.Row="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <templates:MovieListingTemplate/>

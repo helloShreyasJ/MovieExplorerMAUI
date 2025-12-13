@@ -2,36 +2,52 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MovieExplorer.Views.Templates.SearchBarTemplate">
-    <Border
-        Margin="12"
-        Stroke="{StaticResource ElementsLight}"
-        StrokeThickness="1"
-        Padding="10"
-        StrokeShape="RoundRectangle 12">
-
+             xmlns:viewModels="clr-namespace:MovieExplorer.ViewModels"
+             x:Class="MovieExplorer.Views.Templates.SearchBarTemplate" x:DataType="viewModels:MovieViewModel">
+    <Grid>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnSearchTapped"/>
+        </Grid.GestureRecognizers>
+        <!-- invisible entry to capture input -->
+        <Entry x:Name="SearchEntry"
+               Text="{Binding SearchText}"
+               Placeholder="Search"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"
+               Margin="20"
+               Opacity="0"
+               TextChanged="SearchEntry_OnTextChanged"/>
+        <!-- rating out of 10-->
         <Border
-            BackgroundColor="White"
-            StrokeThickness="0"
-            Padding="15"
-            StrokeShape="RoundRectangle 20">
+            Margin="12"
+            Stroke="{StaticResource ElementsLight}"
+            StrokeThickness="1"
+            Padding="10"
+            StrokeShape="RoundRectangle 12">
 
-            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+            <Border
+                BackgroundColor="White"
+                StrokeThickness="0"
+                Padding="15"
+                StrokeShape="RoundRectangle 20">
 
-                <!-- placeholder -->
-                <Label Text="Search"
+                <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+
+                    <!-- placeholder -->
+                    <Label x:Name="SearchLabel"
                        FontSize="18"
                        TextColor="#555"
-                       VerticalOptions="Center"/>
-
-                <!-- search icon -->
-                <Image Grid.Column="1"
-                       Source="search.png"
-                       HeightRequest="22"
-                       WidthRequest="22"
                        VerticalOptions="Center"
-                       Margin="10,0,0,0"/>
-            </Grid>
+                       />
+                    <!-- search icon -->
+                    <Image Grid.Column="1"
+                           Source="search.png"
+                           HeightRequest="22"
+                           WidthRequest="22"
+                           VerticalOptions="Center"
+                           Margin="10,0,0,0"/>
+                </Grid>
+            </Border>
         </Border>
-    </Border>
+    </Grid>
 </ContentView>
