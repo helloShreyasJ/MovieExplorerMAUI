@@ -1,9 +1,12 @@
 using MovieExplorer.Models;
+using MovieExplorer.Services;
+
 namespace MovieExplorer.Views;
 
 [QueryProperty(nameof(Movie), "Movie")]
 public partial class MovieDetailPage : ContentPage
 {
+    private readonly FavoritesService _favoritesService;
     private Movie _movie;
     public Movie Movie
     {
@@ -15,9 +18,10 @@ public partial class MovieDetailPage : ContentPage
         }
     }
 
-    public MovieDetailPage()
+    public MovieDetailPage(FavoritesService favoritesService)
     {
         InitializeComponent();
+        _favoritesService = favoritesService;
         BindingContext = this;
     }
     
@@ -41,5 +45,10 @@ public partial class MovieDetailPage : ContentPage
     {
         base.OnAppearing();
         LoadMovieDetails();
+    }
+
+    private void AddToFavorites_OnClicked(object? sender, EventArgs e)
+    {
+        _favoritesService.AddMovie(Movie);
     }
 }

@@ -5,7 +5,7 @@ namespace MovieExplorer.Services;
 
 public class FavoritesService
 {
-    public ObservableCollection<Movie> Favorites = new ObservableCollection<Movie>();
+    public ObservableCollection<Movie> Favorites { get; } = new ObservableCollection<Movie>();
 
     public void AddMovie(Movie movie)
     {

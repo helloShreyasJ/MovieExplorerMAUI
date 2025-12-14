@@ -3,13 +3,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:templates="clr-namespace:MovieExplorer.Views.Templates"
-             x:Class="MovieExplorer.Views.FavoritesPage">
+             xmlns:services="clr-namespace:MovieExplorer.Services"
+             x:Class="MovieExplorer.Views.FavoritesPage"
+             BackgroundColor="White" x:DataType="services:FavoritesService">
     <Grid RowDefinitions="*,2*,12*">
         <!-- logo -->
         <Image Source="logo_light.png"/>
     
         <!-- searchbar, but hidden -->
-        <templates:SearchBarTemplate Grid.Row="1" IsVisible="False"/>
+        <templates:SearchBarTemplate Grid.Row="1"/>
         
+        <!-- favorites -->
+        <CollectionView ItemsSource="{Binding Favorites}"
+                        Grid.Row="2">
+            
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="2" />
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <templates:FavoriteListingTemplate/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
     </Grid>
 </ContentPage>

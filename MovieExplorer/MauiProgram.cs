@@ -21,6 +21,8 @@ public static class MauiProgram
         // MovieListingService added
         builder.Services.AddSingleton<MovieListingService>();
         builder.Services.AddSingleton<FavoritesService>();
+        builder.Services.AddSingleton<FavoritesPage>();
+        builder.Services.AddSingleton<MovieDetailPage>();
         builder.Services.AddSingleton<MovieViewModel>();
         builder.Services.AddSingleton<HomePage>();
         return builder.Build();

@@ -2,7 +2,8 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MovieExplorer.Views.MovieDetailPage">
+             x:Class="MovieExplorer.Views.MovieDetailPage"
+             BackgroundColor="White">
     <Grid>
      <VerticalStackLayout HorizontalOptions="Center"
                            VerticalOptions="Start"
@@ -28,15 +29,25 @@
           Margin="0,12,0,0"
           FontSize="32"/>
      </VerticalStackLayout>
-     <Button x:Name="BackButton"
-          BackgroundColor="{StaticResource ElementsLight}"
-          Margin="0,62,0,0"
-          HorizontalOptions="Center"
-          CornerRadius="15"
-          Padding="10"
-          WidthRequest="66"
-          HeightRequest="66"
-          ImageSource="back_button.png"
-          Clicked="BackButton_OnClicked"/>
+    <HorizontalStackLayout Margin="0,62,44,0"
+                           HorizontalOptions="End">
+         <Button x:Name="BackButton"
+                 BackgroundColor="{StaticResource ElementsLight}"
+                 CornerRadius="15"
+                 Padding="10"
+                 WidthRequest="66"
+                 HeightRequest="66"
+                 ImageSource="back_button.png"
+                 Clicked="BackButton_OnClicked"/>
+         <Button x:Name="AddToFavorites"
+                 BackgroundColor="{StaticResource ElementsLight}"
+                 Margin="12,0,0,0"
+                 CornerRadius="15"
+                 Padding="10"
+                 WidthRequest="66"
+                 HeightRequest="66"
+                 Clicked="AddToFavorites_OnClicked"
+                 ImageSource="heart.png"/>
+    </HorizontalStackLayout>
     </Grid>
 </ContentPage>
