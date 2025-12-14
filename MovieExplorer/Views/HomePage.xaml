@@ -17,6 +17,9 @@
         
         <!-- listings -->
         <CollectionView ItemsSource="{Binding Movies}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedMovie}"
+                        SelectionChanged="CollectionView_SelectionChanged"
                         Grid.Row="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>

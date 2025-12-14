@@ -1,9 +1,12 @@
-﻿namespace MovieExplorer;
+﻿using MovieExplorer.Views;
+namespace MovieExplorer;
 
 public partial class AppShell : Shell
 {
     public AppShell()
     {
         InitializeComponent();
+        Routing.RegisterRoute(nameof(MovieDetailPage), typeof(MovieDetailPage));
+        Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
     }
 }
