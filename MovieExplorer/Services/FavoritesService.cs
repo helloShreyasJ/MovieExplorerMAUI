@@ -20,11 +20,25 @@ public class FavoritesService
             return;
         }
 
-        if (!Favorites.Contains(movie))
+        //
+        // if (!Favorites.Contains(movie))
+        // {
+        //     Favorites.Add(movie);
+        //     SaveFavorites();
+        // }
+
+        // works
+        foreach (var favorite in Favorites)
         {
-            Favorites.Add(movie);
-            SaveFavorites();
+            if (favorite.title == movie.title
+                && favorite.year == movie.year)
+            {
+                return;
+            }
         }
+        
+        Favorites.Add(movie);
+        SaveFavorites();
     }
 
     public void RemoveMovie(Movie movie)
