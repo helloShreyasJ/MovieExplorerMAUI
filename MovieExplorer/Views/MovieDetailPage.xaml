@@ -17,6 +17,21 @@
                HorizontalOptions="Center"
                />
 
+          <Image
+               x:Name="Poster"
+               HorizontalOptions="Center"
+               HeightRequest="348"
+               WidthRequest="232"
+               Aspect="AspectFill"
+               Margin="0,10,0,10">
+               <Image.Source>
+                    <UriImageSource
+                         Uri="{Binding Movie.posterUrl}"
+                         CachingEnabled="True"
+                         CacheValidity="30.00:00:00" />
+               </Image.Source>
+          </Image>
+          
           <Label x:Name="GenreLabel"
                Margin="0,25,0,0"
                FontSize="32"/>

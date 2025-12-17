@@ -33,6 +33,7 @@ public partial class MovieDetailPage : ContentPage
             GenreLabel.Text = $"Genre: {Movie.GenreText} {Movie.emoji}";
             RatingLabel.Text = $"Rating: {Movie.rating.ToString()}";
             DirectorLabel.Text = $"Director: {Movie.director}";
+            // Poster.Source = Movie.posterUrl;
         }
     }
 
