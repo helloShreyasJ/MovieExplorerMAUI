@@ -50,6 +50,7 @@ public partial class MovieDetailPage : ContentPage
 
     private void AddToFavorites_OnClicked(object? sender, EventArgs e)
     {
+        DisplayAlert("MovieExplorer", "Added to Favorites", "OK");
         _favoritesService.AddMovie(Movie);
     }
 }
