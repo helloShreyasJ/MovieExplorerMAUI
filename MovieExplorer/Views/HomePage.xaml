@@ -5,7 +5,7 @@
              xmlns:templates="clr-namespace:MovieExplorer.Views.Templates"
              xmlns:viewModels="clr-namespace:MovieExplorer.ViewModels"
              x:Class="MovieExplorer.Views.HomePage" x:DataType="viewModels:MovieViewModel"
-             BackgroundColor="{StaticResource White}">
+             BackgroundColor="{StaticResource BackgroundColorLight}">
     <Grid RowDefinitions="*,2*,12*">
         
         <!-- logo -->
@@ -14,6 +14,38 @@
         <!-- searchbar -->
         <templates:SearchBarTemplate
             Grid.Row="1"/>
+        
+        <!-- settings -->
+        <HorizontalStackLayout Grid.Row="2"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    ZIndex="10">
+            <Button
+                    ImageSource="add.png"
+                    BackgroundColor="{StaticResource ElementsLight}"
+                    CornerRadius="10"
+                    HeightRequest="70"
+                    WidthRequest="70"
+                    Padding="10"
+                    Margin="15, 0, 15, 15"/>
+            <Button
+                    ImageSource="sort.png"
+                    BackgroundColor="{StaticResource ElementsLight}"
+                    CornerRadius="10"
+                    HeightRequest="70"
+                    WidthRequest="70"
+                    Padding="10"
+                    Margin="15, 0, 15, 15"/>
+            <Button
+                    ImageSource="settings.png"
+                    BackgroundColor="{StaticResource SettingsIcon}"
+                    CornerRadius="10"
+                    HeightRequest="70"
+                    WidthRequest="70"
+                    Padding="10"
+                    Margin="15, 0, 15, 15"
+                    Clicked="SettingsButton_OnClicked"/>
+        </HorizontalStackLayout>
         
         <!-- listings -->
         <CollectionView ItemsSource="{Binding Movies}"
