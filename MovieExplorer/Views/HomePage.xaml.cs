@@ -23,4 +23,9 @@ public partial class HomePage : ContentPage
         ((CollectionView)sender).SelectedItem = null;
         }
     }
+
+    private async void SettingsButton_OnClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(Settings));
+    }
 }

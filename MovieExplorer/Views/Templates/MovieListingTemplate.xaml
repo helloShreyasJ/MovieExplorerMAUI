@@ -10,7 +10,7 @@
         Padding="20"
         StrokeShape="RoundRectangle 10"
         StrokeThickness="1"
-        BackgroundColor="{StaticResource BackgroundColorLight}">
+        BackgroundColor="{StaticResource ForegroundColorLight}">
         <Grid ColumnDefinitions="*,Auto"
               RowDefinitions="Auto,Auto,Auto">
             

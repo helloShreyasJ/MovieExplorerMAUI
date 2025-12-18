@@ -20,13 +20,13 @@
         <!-- rating out of 10-->
         <Border
             Margin="12"
-            Stroke="{StaticResource ElementsLight}"
+            BackgroundColor="{StaticResource ElementsLight}"
             StrokeThickness="1"
-            Padding="10"
+            Padding="15"
             StrokeShape="RoundRectangle 12">
 
             <Border
-                BackgroundColor="White"
+                BackgroundColor="{StaticResource ForegroundColorLight}"
                 StrokeThickness="0"
                 Padding="15"
                 StrokeShape="RoundRectangle 20">

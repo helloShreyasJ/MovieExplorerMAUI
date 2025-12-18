@@ -10,7 +10,8 @@
     <Color x:Key="BackgroundColorDark">#1E1E1E</Color>
     <Color x:Key="ElementsDark">#E1B12C</Color>
     <!-- Light Theme -->
-    <Color x:Key="BackgroundColorLight">#F5F6FA</Color>
+    <Color x:Key="BackgroundColorLight">#E9E9E9</Color>
+    <Color x:Key="ForegroundColorLight">#F5F6FA</Color>
     <Color x:Key="ElementsLight">#2CBDE1</Color>
     <!-- Settings Icon -->
     <Color x:Key="SettingsIcon">#8C7AE6</Color>
