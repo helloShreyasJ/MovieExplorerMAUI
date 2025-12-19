@@ -6,4 +6,9 @@ public partial class Settings : ContentPage
     {
         InitializeComponent();
     }
+
+    private void DarkMode_OnToggled(object? sender, ToggledEventArgs e)
+    {
+        
+    }
 }

@@ -15,6 +15,7 @@
                FontSize="48"
                FontAttributes="Bold"
                HorizontalOptions="Center"
+               TextColor="Black"
                />
 
           <Image
@@ -34,15 +35,18 @@
           
           <Label x:Name="GenreLabel"
                Margin="0,25,0,0"
-               FontSize="32"/>
+               FontSize="32"
+               TextColor="Black"/>
 
           <Label x:Name="RatingLabel"
                Margin="0,12,0,0"
-               FontSize="32"/>
+               FontSize="32"
+               TextColor="Black"/>
 
           <Label x:Name="DirectorLabel"
           Margin="0,12,0,0"
-          FontSize="32"/>
+          FontSize="32"
+          TextColor="Black"/>
      </VerticalStackLayout>
     <HorizontalStackLayout Margin="0,62,44,0"
                            HorizontalOptions="End">

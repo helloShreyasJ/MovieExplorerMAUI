@@ -3,7 +3,40 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MovieExplorer.Views.Settings">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+    <Grid RowDefinitions="Auto,*"
+          BackgroundColor="{StaticResource BackgroundColorLight}">
+        <Label
+            Grid.Row="0"
+            Text="Settings"
+            FontSize="52"
+            FontAttributes="Bold"
+            HorizontalOptions="Start"
+            Margin="24,24,0,0"
+            TextColor="{StaticResource BackgroundColorDark}"/>
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Padding="24"
+            Spacing="24">
+            <Border
+                BackgroundColor="{StaticResource ForegroundColorLight}"
+                StrokeShape="RoundRectangle 16"
+                Padding="16">
+                <Grid ColumnDefinitions="*,Auto"
+                      VerticalOptions="Center">
+                    <Label
+                        Text="Dark Mode"
+                        FontSize="24"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource BackgroundColorDark}"/>
+                    <Switch
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        ThumbColor="{StaticResource ForegroundColorLight}"
+                        OnColor="{StaticResource SwitchOnColor}"
+                        Toggled="DarkMode_OnToggled"/>
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

@@ -5,7 +5,7 @@
              xmlns:templates="clr-namespace:MovieExplorer.Views.Templates"
              xmlns:services="clr-namespace:MovieExplorer.Services"
              x:Class="MovieExplorer.Views.FavoritesPage"
-             BackgroundColor="White" x:DataType="services:FavoritesService">
+             BackgroundColor="{StaticResource BackgroundColorLight}" x:DataType="services:FavoritesService">
     <Grid RowDefinitions="*,2*,12*">
         <!-- logo -->
         <Image Source="logo_light.png"/>
@@ -28,7 +28,6 @@
                     <templates:FavoriteListingTemplate/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            
         </CollectionView>
     </Grid>
 </ContentPage>
