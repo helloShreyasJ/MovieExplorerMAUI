@@ -4,15 +4,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MovieExplorer.Views.Settings">
     <Grid RowDefinitions="Auto,*"
-          BackgroundColor="{StaticResource BackgroundColorLight}">
+          BackgroundColor="{DynamicResource AppBackgroundColor}">
         <Label
+            x:Name="SettingsHeader"
             Grid.Row="0"
             Text="Settings"
             FontSize="52"
             FontAttributes="Bold"
             HorizontalOptions="Start"
             Margin="24,24,0,0"
-            TextColor="{StaticResource BackgroundColorDark}"/>
+            TextColor="{DynamicResource AppTextColor}"/>
 
         <VerticalStackLayout
             Grid.Row="1"

@@ -5,11 +5,11 @@
              xmlns:templates="clr-namespace:MovieExplorer.Views.Templates"
              xmlns:viewModels="clr-namespace:MovieExplorer.ViewModels"
              x:Class="MovieExplorer.Views.HomePage" x:DataType="viewModels:MovieViewModel"
-             BackgroundColor="{StaticResource BackgroundColorLight}">
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
     <Grid RowDefinitions="*,2*,12*">
         
         <!-- logo -->
-        <Image Source="logo_light.png"/>
+        <Image Source="logo_light.png"></Image>
         
         <!-- searchbar -->
         <templates:SearchBarTemplate

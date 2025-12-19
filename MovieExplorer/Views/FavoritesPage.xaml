@@ -5,12 +5,12 @@
              xmlns:templates="clr-namespace:MovieExplorer.Views.Templates"
              xmlns:services="clr-namespace:MovieExplorer.Services"
              x:Class="MovieExplorer.Views.FavoritesPage"
-             BackgroundColor="{StaticResource BackgroundColorLight}" x:DataType="services:FavoritesService">
+             BackgroundColor="{DynamicResource AppBackgroundColor}" x:DataType="services:FavoritesService">
     <Grid RowDefinitions="*,2*,12*">
         <!-- logo -->
-        <Image Source="logo_light.png"/>
+        <Image Source="logo_light.png"></Image>
     
-        <!-- searchbar, but hidden -->
+        <!-- searchbar -->
         <templates:SearchBarTemplate Grid.Row="1"/>
         
         <!-- favorites -->

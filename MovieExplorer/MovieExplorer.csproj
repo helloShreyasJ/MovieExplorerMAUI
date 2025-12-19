@@ -75,6 +75,12 @@
       <MauiXaml Update="Views\Settings.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
+      <MauiXaml Update="Resources\Styles\DarkTheme.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+      <MauiXaml Update="Resources\Styles\LightTheme.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
     </ItemGroup>
 
     <ItemGroup>
