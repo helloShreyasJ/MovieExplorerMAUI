@@ -3,4 +3,5 @@
                     x:Class="MovieExplorer.Resources.Styles.LightTheme">
     <Color x:Key="AppBackgroundColor">#E9E9E9</Color>
     <Color x:Key="AppTextColor">#1E1E1E</Color>
+    <!-- <FileImageSource x:Key="AppLogo">logo_light.svg</FileImageSource> -->
 </ResourceDictionary>

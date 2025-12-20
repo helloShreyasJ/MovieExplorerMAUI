@@ -9,7 +9,7 @@
     <Grid RowDefinitions="*,2*,12*">
         
         <!-- logo -->
-        <Image Source="logo_light.png"></Image>
+        <Image Source="{DynamicResource AppLogo}"></Image>
         
         <!-- searchbar -->
         <templates:SearchBarTemplate

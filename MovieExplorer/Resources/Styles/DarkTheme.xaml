@@ -3,4 +3,5 @@
                     x:Class="MovieExplorer.Resources.Styles.DarkTheme">
     <Color x:Key="AppBackgroundColor">#1E1E1E</Color>
     <Color x:Key="AppTextColor">#E9E9E9</Color>
+    <!-- <FileImageSource x:Key="AppLogo">logo_dark.svg</FileImageSource> -->
 </ResourceDictionary>
