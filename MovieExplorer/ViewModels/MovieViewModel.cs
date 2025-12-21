@@ -9,12 +9,22 @@ namespace MovieExplorer.ViewModels;
 
 public class MovieViewModel : INotifyPropertyChanged
 {
+    private bool _isLoading;
     private readonly MovieListingService _listingService; // loads movies from donnys github
     private Movie _selectedMovie;
     private List<Movie> _allMovies = new List<Movie>(); // not bound to UI. stores ALL movies
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>(); // bound to UI. shows filtered movies
     private string _searchText = string.Empty;
 
+    public bool IsLoading
+    {
+        get { return _isLoading; }
+        set
+        {
+            _isLoading = value;
+            OnPropertyChanged();
+        }
+    }
     public string SearchText
     {
         get { return _searchText; }
@@ -52,6 +62,8 @@ public class MovieViewModel : INotifyPropertyChanged
     {
         try
         {
+            // _isLoading = true; this wasn't working before.. why? because OnPropertyChanged never gets called so no updates
+            IsLoading = true; // should work now
             // get movies from service
             var movies = await _listingService.GetMovieListing();
             _allMovies = movies.ToList();
@@ -60,6 +72,10 @@ public class MovieViewModel : INotifyPropertyChanged
         catch (Exception ex)
         {
             Debug.WriteLine($"Error loading movies: {ex}");
+        }
+        finally
+        {
+            IsLoading = false;
         }
     }
 

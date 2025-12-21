@@ -59,5 +59,24 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        
+        <!-- activity indicator -->
+        <Grid Grid.Row="2"
+              BackgroundColor="{DynamicResource ActivityIndicatorBg}"
+              IsVisible="{Binding IsLoading}">
+            <Label
+                Text="Fetching Movie Data from TMDB Servers..."
+                HorizontalOptions="Center"
+                Margin="0,20,0,0"
+                FontSize="24"
+                TextColor="{DynamicResource AppTextColor}"/>
+            <ActivityIndicator
+                IsRunning="{Binding IsLoading}"
+                Color="{StaticResource ElementsLight}"
+                WidthRequest="100"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+        </Grid>
     </Grid>
 </ContentPage>

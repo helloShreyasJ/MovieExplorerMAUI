@@ -3,5 +3,8 @@
                     x:Class="MovieExplorer.Resources.Styles.DarkTheme">
     <Color x:Key="AppBackgroundColor">#1E1E1E</Color>
     <Color x:Key="AppTextColor">#E9E9E9</Color>
-    <!-- <FileImageSource x:Key="AppLogo">logo_dark.svg</FileImageSource> -->
+    <Color x:Key="AppActivityIndictBg">#262626</Color>
+    <!-- <FileImageSource x:Key="AppLogo">logo_dark.svg</FileImageSource> does not work.
+    was able to get the same functionality using App.xaml.cs file and creating a function
+    that sets the initial theme using prefs and setting the dynamic logo image there-->
 </ResourceDictionary>

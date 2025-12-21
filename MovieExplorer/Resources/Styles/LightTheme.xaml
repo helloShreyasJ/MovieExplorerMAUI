@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="MovieExplorer.Resources.Styles.LightTheme">
     <Color x:Key="AppBackgroundColor">#E9E9E9</Color>
-    <Color x:Key="AppTextColor">#1E1E1E</Color>
+    <Color x:Key="AppTextColor">#1E1E1E</Color>E7E7E7
+    <Color x:Key="AppActivityIndictBg">#E3E3E3</Color>
     <!-- <FileImageSource x:Key="AppLogo">logo_light.svg</FileImageSource> -->
 </ResourceDictionary>
