@@ -73,7 +73,8 @@ public class MovieListingService
         var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
         foreach (var movie in movies)
         {
-            movie.posterUrl = await GetPosterUrlAsync(movie.title, movie.year) ?? "placeholder.png";
+            // movie.posterUrl = await GetPosterUrlAsync(movie.title, movie.year) ?? "placeholder.png"; // did not work
+            movie.posterUrl = await GetPosterUrlAsync(movie.title, movie.year);
             System.Diagnostics.Debug.WriteLine(movie.posterUrl);
         }
         

@@ -2,8 +2,9 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:MovieExplorer.Views"
              x:Class="MovieExplorer.Views.MovieDetailPage"
-             BackgroundColor="{DynamicResource AppBackgroundColor}">
+             BackgroundColor="{DynamicResource AppBackgroundColor}" x:DataType="views:MovieDetailPage">
     <Grid>
      <VerticalStackLayout HorizontalOptions="Center"
                            VerticalOptions="Start"
@@ -18,20 +19,27 @@
                TextColor="{DynamicResource AppTextColor}"
                />
 
-          <Image
-               x:Name="Poster"
-               HorizontalOptions="Center"
-               HeightRequest="348"
-               WidthRequest="232"
-               Aspect="AspectFill"
-               Margin="0,10,0,10">
-               <Image.Source>
-                    <UriImageSource
-                         Uri="{Binding Movie.posterUrl}"
-                         CachingEnabled="True"
-                         CacheValidity="30.00:00:00" />
-               </Image.Source>
-          </Image>
+         <Grid>
+              <!-- placeholder image is always there. real image overlays once loaded -->
+              <Image Source="placeholder.png"
+                     HeightRequest="348"
+                     WidthRequest="232"
+                     Aspect="Fill" />
+              <Image x:Name="Poster"
+                     HorizontalOptions="Center"
+                     HeightRequest="348"
+                     WidthRequest="232"
+                     Aspect="AspectFill"
+                     Margin="0,10,0,10"
+                     IsVisible="{Binding Movie.posterUrl}">
+                   <Image.Source>
+                        <UriImageSource
+                             Uri="{Binding Movie.posterUrl}"
+                             CachingEnabled="True"
+                             CacheValidity="30.00:00:00" />
+                   </Image.Source>
+              </Image>
+         </Grid>
           
           <Label x:Name="GenreLabel"
                Margin="0,25,0,0"
