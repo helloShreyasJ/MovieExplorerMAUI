@@ -28,4 +28,14 @@ public partial class HomePage : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(Settings));
     }
+
+    private async void SortButton_OnClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(FilterPage));
+    }
+
+    private void AddButton_OnClicked(object? sender, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
 }

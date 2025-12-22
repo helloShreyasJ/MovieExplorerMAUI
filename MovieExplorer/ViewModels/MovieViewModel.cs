@@ -36,7 +36,7 @@ public class MovieViewModel : INotifyPropertyChanged
             }
             _searchText = value;
             OnPropertyChanged();
-            ApplyFilter();
+            ApplySearchFilter();
         }
     }
     public Movie SelectedMovie
@@ -67,7 +67,7 @@ public class MovieViewModel : INotifyPropertyChanged
             // get movies from service
             var movies = await _listingService.GetMovieListing();
             _allMovies = movies.ToList();
-            ApplyFilter(); // if search text contains something match immediately
+            ApplySearchFilter(); // if search text contains something match immediately
         }
         catch (Exception ex)
         {
@@ -79,7 +79,7 @@ public class MovieViewModel : INotifyPropertyChanged
         }
     }
 
-    public void ApplyFilter()
+    public void ApplySearchFilter()
     {
         Movies.Clear();
 
@@ -103,6 +103,35 @@ public class MovieViewModel : INotifyPropertyChanged
                 Movies.Add(movie);
             }
         }
+    }
+    
+    // sorts/orders movie using the typa filter passed through parameters
+    public void ApplySort(string filterType)
+    {
+        IEnumerable<Movie> sorted;
+
+        switch (filterType)
+        {
+            case "Title":
+                sorted = _allMovies.OrderBy(m => m.title);
+                break;
+            case "Year":
+                sorted = _allMovies.OrderByDescending(m => m.year);
+                break;
+            case "Genre":
+                sorted = _allMovies.OrderBy(m => m.GenreText);
+                break;
+            case "Rating":
+                sorted = _allMovies.OrderByDescending(m => m.rating);
+                break;
+            default:
+                sorted = _allMovies;
+                break;
+        };
+
+        Movies.Clear();
+        foreach (var movie in sorted)
+            Movies.Add(movie);
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

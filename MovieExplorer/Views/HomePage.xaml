@@ -27,7 +27,8 @@
                     HeightRequest="70"
                     WidthRequest="70"
                     Padding="10"
-                    Margin="15, 0, 15, 15"/>
+                    Margin="15, 0, 15, 15"
+                    Clicked="AddButton_OnClicked"/>
             <Button
                     ImageSource="sort.png"
                     BackgroundColor="{StaticResource ElementsLight}"
@@ -35,7 +36,8 @@
                     HeightRequest="70"
                     WidthRequest="70"
                     Padding="10"
-                    Margin="15, 0, 15, 15"/>
+                    Margin="15, 0, 15, 15"
+                    Clicked="SortButton_OnClicked"/>
             <Button
                     ImageSource="settings.png"
                     BackgroundColor="{StaticResource SettingsIcon}"
