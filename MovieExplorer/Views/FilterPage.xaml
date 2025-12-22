@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MovieExplorer.Views.FilterPage">
+    <Grid RowDefinitions="Auto,*"
+          BackgroundColor="{DynamicResource AppBackgroundColor}">
+        <Label x:Name="FilterPageHeader"
+            Grid.Row="0"
+            Text="Filter By"
+            FontSize="52"
+            FontAttributes="Bold"
+            HorizontalOptions="Start"
+            Margin="24,24,0,0"
+            TextColor="{DynamicResource AppTextColor}"/>
+
+        <VerticalStackLayout x:Name="FilterOptionsStack"
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Padding="24"
+            Spacing="24">
+            <RadioButton Content="Title"
+                         Value="Title"
+                         GroupName="FilterOptions"
+                         TextColor="{DynamicResource AppTextColor}" />
+
+            <RadioButton Content="Year"
+                         Value="Year"
+                         GroupName="FilterOptions"
+                         TextColor="{DynamicResource AppTextColor}" />
+
+            <RadioButton Content="Genre"
+                         Value="Genre"
+                         GroupName="FilterOptions"
+                         TextColor="{DynamicResource AppTextColor}" />
+
+            <RadioButton Content="Rating"
+                         Value="Rating"
+                         GroupName="FilterOptions"
+                         TextColor="{DynamicResource AppTextColor}" />
+            <Button Text="Filter"
+                    TextColor="{DynamicResource AppTextColor}"
+                    BackgroundColor="{StaticResource ElementsLight}"
+                    CornerRadius="12"
+                    WidthRequest="330"
+                    HeightRequest="84"
+                    Clicked="FilterButton_OnClicked"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
