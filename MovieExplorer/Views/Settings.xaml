@@ -39,6 +39,40 @@
                         Toggled="DarkMode_OnToggled"/>
                 </Grid>
             </Border>
+            
+            <Border
+                BackgroundColor="{StaticResource ForegroundColorLight}"
+                StrokeShape="RoundRectangle 16"
+                Padding="16">
+                <Grid ColumnDefinitions="*,Auto"
+                      VerticalOptions="Center">
+                    <Label
+                        Text="API Key (TMDB)"
+                        FontSize="24"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource BackgroundColorDark}"
+                        Grid.Column="0"/>
+                    <HorizontalStackLayout
+                        VerticalOptions="Center" 
+                        HorizontalOptions="End"
+                        Grid.Column="1">
+                        <Entry x:Name="TMDBApiKey"
+                               WidthRequest="400"
+                               Margin="10,0,10,0"
+                               Opacity="0.5"
+                               BackgroundColor="{StaticResource BackgroundColorDark}"
+                               TextColor="{StaticResource BackgroundColorLight}"/>
+                        <Button
+                            ImageSource="add.png"
+                            BackgroundColor="{StaticResource SwitchOnColor}"
+                            CornerRadius="10"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Padding="10"
+                            Clicked="APIButton_OnClicked"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

@@ -1,4 +1,5 @@
 using MovieExplorer.Resources.Styles;
+using MovieExplorer.ViewModels;
 
 namespace MovieExplorer.Views;
 
@@ -57,5 +58,13 @@ public partial class Settings : ContentPage
         DarkModeSwitch.Toggled -= DarkMode_OnToggled;
         DarkModeSwitch.IsToggled = isDark;
         DarkModeSwitch.Toggled += DarkMode_OnToggled;
+    }
+
+    private async void APIButton_OnClicked(object? sender, EventArgs e)
+    {
+        DisplayAlert("MovieExplorer", "API Key Applied. Reload Page.", "OK");
+        Key.personalKey = TMDBApiKey.Text;
+        System.Diagnostics.Debug.WriteLine($"API Key updated: {Key.personalKey}");
+        await Shell.Current.GoToAsync("..");
     }
 }

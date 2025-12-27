@@ -58,7 +58,7 @@ public class MovieViewModel : INotifyPropertyChanged
         _ = LoadMoviesAsync(); // start loading movies
     }
 
-    private async Task LoadMoviesAsync()
+    public async Task LoadMoviesAsync()
     {
         try
         {

@@ -6,8 +6,8 @@
              xmlns:viewModels="clr-namespace:MovieExplorer.ViewModels"
              x:Class="MovieExplorer.Views.HomePage" x:DataType="viewModels:MovieViewModel"
              BackgroundColor="{DynamicResource AppBackgroundColor}">
+    
     <Grid RowDefinitions="*,2*,12*">
-        
         <!-- logo -->
         <Image Source="{DynamicResource AppLogo}"></Image>
         
@@ -21,14 +21,14 @@
                     HorizontalOptions="End"
                     ZIndex="10">
             <Button
-                    ImageSource="add.png"
+                    ImageSource="reload.png"
                     BackgroundColor="{StaticResource ElementsLight}"
                     CornerRadius="10"
                     HeightRequest="70"
                     WidthRequest="70"
                     Padding="10"
                     Margin="15, 0, 15, 15"
-                    Clicked="AddButton_OnClicked"/>
+                    Clicked="ReloadButton_OnClicked"/>
             <Button
                     ImageSource="sort.png"
                     BackgroundColor="{StaticResource ElementsLight}"

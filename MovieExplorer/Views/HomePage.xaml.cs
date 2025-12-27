@@ -34,8 +34,11 @@ public partial class HomePage : ContentPage
         await Shell.Current.GoToAsync(nameof(FilterPage));
     }
 
-    private void AddButton_OnClicked(object? sender, EventArgs e)
+    private async void ReloadButton_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        if (BindingContext is MovieViewModel vm)
+        {
+            await vm.LoadMoviesAsync();
+        }
     }
 }

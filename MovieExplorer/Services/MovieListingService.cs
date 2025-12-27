@@ -7,7 +7,8 @@ public class MovieListingService
 {
     private const string MovieListUrl = "https://raw.githubusercontent.com/DonH-ITS/jsonfiles/refs/heads/main/moviesemoji.json";
     private readonly string _localFilePath;
-    private const string TmdbApiKey = Key.personalKey; // IMPORTANT: tmdb api key needs to be here to get the images
+    // private string _tmdbApiKey = Key.personalKey; // IMPORTANT: tmdb api key needs to be here to get the images
+    private string _tmdbApiKey => Key.personalKey; // get latest value of key
     private const string TmdbSearchUrl = "https://api.themoviedb.org/3/search/movie";
     private readonly HttpClient _client; // using only one HttpClient
 
@@ -24,7 +25,7 @@ public class MovieListingService
             $"TMDB search: {title} ({year})");
         try
         {
-            string url =  $"{TmdbSearchUrl}?api_key={TmdbApiKey}&query={Uri.EscapeDataString(title)}";
+            string url =  $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
             // $"{TmdbSearchUrl}?api_key={TmdbApiKey}&query={Uri.EscapeDataString(title)}&year={year}"; test: is adding year as query breaking stuff?
                                                                                                         // no
             string json = await _client.GetStringAsync(url);
