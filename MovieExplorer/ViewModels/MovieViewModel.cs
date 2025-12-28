@@ -64,6 +64,7 @@ public class MovieViewModel : INotifyPropertyChanged
         {
             // _isLoading = true; this wasn't working before.. why? because OnPropertyChanged never gets called so no updates
             IsLoading = true; // should work now
+            Movies.Clear(); // removes existing movies when function gets called. fixes ui freeze
             // get movies from service
             var movies = await _listingService.GetMovieListing();
             _allMovies = movies.ToList();
