@@ -19,10 +19,38 @@ public class MovieListingService
         _client = new HttpClient();
     }
 
-    private async Task<string> GetPosterUrlAsync(string? title, int year)
+    private async Task<string> GetOverviewAsync(string? title)
     {
-        System.Diagnostics.Debug.WriteLine(
-            $"TMDB search: {title} ({year})");
+        System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
+        try
+        {
+            string url = $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
+            string json = await _client.GetStringAsync(url);
+            System.Diagnostics.Debug.WriteLine(json); // debug test
+            using JsonDocument doc = JsonDocument.Parse(json);
+            var results = doc.RootElement.GetProperty("results");
+            if (results.GetArrayLength() == 0)
+            {
+                return "No overview found for this movie.";
+            }
+
+            var overview = results[0].GetProperty("overview").GetString();
+            if (string.IsNullOrEmpty(overview))
+            {
+                return null;
+            }
+
+            return overview;
+        } catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error in GetOverviewAsync: {ex}");
+            return "Overview unavailable. API Key Required.";
+        }
+    }
+
+    private async Task<string> GetPosterUrlAsync(string? title)
+    {
+        System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
         try
         {
             string url =  $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
@@ -32,19 +60,15 @@ public class MovieListingService
             System.Diagnostics.Debug.WriteLine(json); // debug test
             using JsonDocument doc = JsonDocument.Parse(json);
             var results = doc.RootElement.GetProperty("results");
-
             if (results.GetArrayLength() == 0)
             {
                 return null;
             }
-
             var posterPath = results[0].GetProperty("poster_path").GetString();
-
             if (string.IsNullOrEmpty(posterPath))
             {
                 return null;
             }
-
             return $"https://image.tmdb.org/t/p/w500{posterPath}";
         }
         catch
@@ -74,11 +98,10 @@ public class MovieListingService
         var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
         foreach (var movie in movies)
         {
-            // movie.posterUrl = await GetPosterUrlAsync(movie.title, movie.year) ?? "placeholder.png"; // did not work
-            movie.posterUrl = await GetPosterUrlAsync(movie.title, movie.year);
+            movie.posterUrl = await GetPosterUrlAsync(movie.title);
+            movie.overview = await GetOverviewAsync(movie.title);
             System.Diagnostics.Debug.WriteLine(movie.posterUrl);
         }
-        
         return movies;
     }
     

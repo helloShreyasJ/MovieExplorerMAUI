@@ -16,8 +16,7 @@
                FontSize="48"
                FontAttributes="Bold"
                HorizontalOptions="Center"
-               TextColor="{DynamicResource AppTextColor}"
-               />
+               TextColor="{DynamicResource AppTextColor}"/>
 
          <Grid>
               <!-- placeholder image is always there. real image overlays once loaded -->
@@ -36,7 +35,7 @@
                         <UriImageSource
                              Uri="{Binding Movie.posterUrl}"
                              CachingEnabled="True"
-                             CacheValidity="30.00:00:00" />
+                             CacheValidity="30.00:00:00"/>
                    </Image.Source>
               </Image>
          </Grid>
@@ -52,6 +51,11 @@
                TextColor="{DynamicResource AppTextColor}"/>
 
           <Label x:Name="DirectorLabel"
+          Margin="0,12,0,0"
+          FontSize="32"
+          TextColor="{DynamicResource AppTextColor}"/>
+          
+          <Label x:Name="OverviewLabel"
           Margin="0,12,0,0"
           FontSize="32"
           TextColor="{DynamicResource AppTextColor}"/>

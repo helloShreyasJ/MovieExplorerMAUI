@@ -34,6 +34,7 @@ public partial class MovieDetailPage : ContentPage
             RatingLabel.Text = $"Rating: {Movie.rating.ToString()}";
             DirectorLabel.Text = $"Director: {Movie.director}";
             // Poster.Source = Movie.posterUrl;
+            OverviewLabel.Text = $"Overview: {Movie.overview}";
         }
     }
 
