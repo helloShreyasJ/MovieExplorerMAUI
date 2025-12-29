@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Text.Json;
 using MovieExplorer.Models;
+using MovieExplorer.Views;
 
 namespace MovieExplorer.Services;
 
@@ -15,28 +16,27 @@ public class FavoritesService
     }
     public void AddMovie(Movie movie)
     {
-        if (movie == null)
+        if (movie == null) return;
+        
+        // foreach (var favorite in Favorites)
+        // {
+        //     if (favorite.title == movie.title
+        //         && favorite.year == movie.year)
+        //     {
+        //         return;
+        //     }
+        // } // works when adding but doesnt work when removing cuz it doesnt target the existing favorite object
+        
+        //stored favorite object
+        var existing = Favorites.FirstOrDefault(f => f.title == movie.title && f.year == movie.year);
+
+        if (existing != null)
         {
+            Favorites.Remove(existing);
+            SaveFavorites();
             return;
         }
 
-        //
-        // if (!Favorites.Contains(movie))
-        // {
-        //     Favorites.Add(movie);
-        //     SaveFavorites();
-        // }
-
-        // works
-        foreach (var favorite in Favorites)
-        {
-            if (favorite.title == movie.title
-                && favorite.year == movie.year)
-            {
-                return;
-            }
-        }
-        
         Favorites.Add(movie);
         SaveFavorites();
     }
@@ -48,16 +48,26 @@ public class FavoritesService
             return;
         }
 
-        if (Favorites.Contains(movie))
+        // if (IsFavorite(movie))
+        // {
+        //     Favorites.Remove(movie);
+        //     SaveFavorites();
+        // }
+        
+        //stored favorite object
+        var existing = Favorites.FirstOrDefault(f => f.title == movie.title && f.year == movie.year);
+
+        if (existing != null)
         {
-            Favorites.Remove(movie);
+            Favorites.Remove(existing); 
             SaveFavorites();
         }
     }
 
     public bool IsFavorite(Movie movie)
     {
-        return Favorites.Contains(movie);
+        // return Favorites.Contains(movie);
+        return Favorites.Any(f => f.title == movie.title && f.year == movie.year);
     }
 
     private void SaveFavorites()
@@ -69,16 +79,14 @@ public class FavoritesService
     private void LoadFavorites()
     {
         string json = Preferences.Get(FavoritesKey, "");
-
         if (string.IsNullOrWhiteSpace(json))
         {
             return;
         }
-
+        
         var movies = JsonSerializer.Deserialize<List<Movie>>(json);
-
+        
         Favorites.Clear(); // to avoid duplicates
-
         foreach (var movie in movies)
         {
             Favorites.Add(movie);
