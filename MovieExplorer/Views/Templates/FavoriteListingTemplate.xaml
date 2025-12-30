@@ -8,63 +8,63 @@
 
     <Border
         Margin="12"
-        Padding="24"
-        StrokeThickness="1"
+        Padding="16"
+        StrokeThickness="0"
         StrokeShape="RoundRectangle 10"
         BackgroundColor="{StaticResource ForegroundColorLight}">
+        
         <Grid
             ColumnDefinitions="*,Auto"
-            RowDefinitions="Auto,Auto,*">
+            RowDefinitions="Auto,Auto">
 
             <!-- title -->
             <Label
                 Grid.Row="0"
                 Grid.Column="0"
                 Text="{Binding title}"
-                FontSize="24"
+                FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black"
-                LineBreakMode="WordWrap" />
+                LineBreakMode="TailTruncation"
+                MaxLines="2"/>
 
             <VerticalStackLayout
                 Grid.Row="1"
                 Grid.Column="0"
-                Margin="0,24,0,0"
-                Spacing="8">
-                
-                <!-- genre -->
-                <HorizontalStackLayout>
+                Spacing="4"
+                VerticalOptions="Center">
+
+                <HorizontalStackLayout Spacing="6">
                     <Label
                         Text="{Binding GenreText}"
-                        FontSize="16"
-                        TextColor="Black"/>
-
+                        FontSize="14"
+                        TextColor="#666666"/>
                     <Label
                         Text="{Binding emoji}"
-                        FontSize="16"
-                        Margin="8,0,0,0"/>
+                        FontSize="14"/>
                 </HorizontalStackLayout>
-                <!-- director -->
+
                 <Label
                     Text="{Binding director, StringFormat='Director: {0}'}"
-                    FontSize="16"
-                    TextColor="Black"/>
+                    FontSize="14"
+                    TextColor="#666666"
+                    LineBreakMode="TailTruncation"/>
             </VerticalStackLayout>
 
             <!-- rating -->
             <Border
-                Grid.Row="2"
+                Grid.Row="1"
                 Grid.Column="1"
-                HeightRequest="85"
-                WidthRequest="85"
-                StrokeShape="RoundRectangle 60"
+                HeightRequest="{OnPlatform Android=50, Default=68}"
+                WidthRequest="{OnPlatform Android=50, Default=68}"
+                StrokeShape="RoundRectangle 30"
                 BackgroundColor="{StaticResource ElementsLight}"
                 VerticalOptions="End"
                 HorizontalOptions="End">
 
                 <Label
                     Text="{Binding rating}"
-                    FontSize="22"
+                    FontSize="18"
                     FontAttributes="Bold"
                     TextColor="Black"
                     HorizontalOptions="Center"

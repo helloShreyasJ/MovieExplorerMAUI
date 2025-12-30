@@ -6,7 +6,7 @@
              xmlns:services="clr-namespace:MovieExplorer.Services"
              x:Class="MovieExplorer.Views.FavoritesPage"
              BackgroundColor="{DynamicResource AppBackgroundColor}" x:DataType="services:FavoritesService">
-    <Grid RowDefinitions="*,2*,12*">
+    <Grid RowDefinitions="*,2.5*,12*">
         <!-- logo -->
         <Image Source="{DynamicResource AppLogo}"></Image>
     
