@@ -9,7 +9,6 @@ public class Movie
     public double rating { get; set; }
     public string emoji { get; set; }
     public string posterUrl { get; set; }
-    
     public string overview { get; set; }
     
     public string GenreText => string.Join(", ", genre);

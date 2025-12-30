@@ -5,80 +5,82 @@
              xmlns:views="clr-namespace:MovieExplorer.Views"
              x:Class="MovieExplorer.Views.MovieDetailPage"
              BackgroundColor="{DynamicResource AppBackgroundColor}" x:DataType="views:MovieDetailPage">
-    <Grid>
-     <VerticalStackLayout HorizontalOptions="Center"
-                           VerticalOptions="Start"
-                           HeightRequest="100"
-                           Margin="0,45,0,0"
-                           Padding="20">
+<ScrollView>
+     <Grid HeightRequest="1000">
+          <VerticalStackLayout HorizontalOptions="Center"
+                                VerticalOptions="Start"
+                                HeightRequest="100"
+                                Margin="0,45,0,0"
+                                Padding="20">
 
-          <Label x:Name="TitleLabel"
-               FontSize="48"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"
-               TextColor="{DynamicResource AppTextColor}"/>
+               <Label x:Name="TitleLabel"
+                    FontSize="48"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    TextColor="{DynamicResource AppTextColor}"/>
 
-         <Grid>
-              <!-- placeholder image is always there. real image overlays once loaded -->
-              <Image Source="placeholder.png"
-                     HeightRequest="348"
-                     WidthRequest="232"
-                     Aspect="Fill" />
-              <Image x:Name="Poster"
-                     HorizontalOptions="Center"
-                     HeightRequest="348"
-                     WidthRequest="232"
-                     Aspect="AspectFill"
-                     Margin="0,10,0,10"
-                     IsVisible="{Binding Movie.posterUrl}">
-                   <Image.Source>
-                        <UriImageSource
-                             Uri="{Binding Movie.posterUrl}"
-                             CachingEnabled="True"
-                             CacheValidity="30.00:00:00"/>
-                   </Image.Source>
-              </Image>
-         </Grid>
-          
-          <Label x:Name="GenreLabel"
-               Margin="0,25,0,0"
-               FontSize="32"
-               TextColor="{DynamicResource AppTextColor}"/>
+              <Grid>
+                   <!-- placeholder image is always there. real image overlays once loaded -->
+                   <Image Source="placeholder.png"
+                          HeightRequest="348"
+                          WidthRequest="232"
+                          Aspect="Fill" />
+                   <Image x:Name="Poster"
+                          HorizontalOptions="Center"
+                          HeightRequest="348"
+                          WidthRequest="232"
+                          Aspect="AspectFill"
+                          Margin="0,10,0,10"
+                          IsVisible="{Binding Movie.posterUrl}">
+                        <Image.Source>
+                             <UriImageSource
+                                  Uri="{Binding Movie.posterUrl}"
+                                  CachingEnabled="True"
+                                  CacheValidity="30.00:00:00"/>
+                        </Image.Source>
+                   </Image>
+              </Grid>
+               
+               <Label x:Name="GenreLabel"
+                    Margin="0,25,0,0"
+                    FontSize="32"
+                    TextColor="{DynamicResource AppTextColor}"/>
 
-          <Label x:Name="RatingLabel"
+               <Label x:Name="RatingLabel"
+                    Margin="0,12,0,0"
+                    FontSize="32"
+                    TextColor="{DynamicResource AppTextColor}"/>
+
+               <Label x:Name="DirectorLabel"
                Margin="0,12,0,0"
                FontSize="32"
                TextColor="{DynamicResource AppTextColor}"/>
-
-          <Label x:Name="DirectorLabel"
-          Margin="0,12,0,0"
-          FontSize="32"
-          TextColor="{DynamicResource AppTextColor}"/>
-          
-          <Label x:Name="OverviewLabel"
-          Margin="0,12,0,0"
-          FontSize="32"
-          TextColor="{DynamicResource AppTextColor}"/>
-     </VerticalStackLayout>
-    <HorizontalStackLayout Margin="0,62,44,0"
-                           HorizontalOptions="End">
-         <Button x:Name="BackButton"
-                 BackgroundColor="{StaticResource ElementsLight}"
-                 CornerRadius="15"
-                 Padding="10"
-                 WidthRequest="66"
-                 HeightRequest="66"
-                 ImageSource="back_button.png"
-                 Clicked="BackButton_OnClicked"/>
-         <Button x:Name="AddToFavorites"
-                 BackgroundColor="{StaticResource ElementsLight}"
-                 Margin="12,0,0,0"
-                 CornerRadius="15"
-                 Padding="10"
-                 WidthRequest="66"
-                 HeightRequest="66"
-                 Clicked="AddToFavorites_OnClicked"
-                 ImageSource="heart.png"/>
-    </HorizontalStackLayout>
+               
+               <Label x:Name="OverviewLabel"
+               Margin="0,12,0,0"
+               FontSize="32"
+               TextColor="{DynamicResource AppTextColor}"/>
+          </VerticalStackLayout>
+         <HorizontalStackLayout Margin="0,62,44,0"
+                                HorizontalOptions="End">
+              <Button x:Name="BackButton"
+                      BackgroundColor="{StaticResource ElementsLight}"
+                      CornerRadius="15"
+                      Padding="10"
+                      WidthRequest="66"
+                      HeightRequest="66"
+                      ImageSource="back_button.png"
+                      Clicked="BackButton_OnClicked"/>
+              <Button x:Name="AddToFavorites"
+                      BackgroundColor="{StaticResource ElementsLight}"
+                      Margin="12,0,0,0"
+                      CornerRadius="15"
+                      Padding="10"
+                      WidthRequest="66"
+                      HeightRequest="66"
+                      Clicked="AddToFavorites_OnClicked"
+                      ImageSource="heart.png"/>
+         </HorizontalStackLayout>
     </Grid>
+</ScrollView>
 </ContentPage>
