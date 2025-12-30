@@ -1,4 +1,5 @@
-﻿using MovieExplorer.Resources.Styles;
+﻿using System.Diagnostics;
+using MovieExplorer.Resources.Styles;
 
 namespace MovieExplorer;
 
@@ -11,6 +12,7 @@ public partial class App : Application
     {
         InitializeComponent();
         SetInitialTheme();
+        SetAPIKey();
     }
     
     protected override Window CreateWindow(IActivationState? activationState)
@@ -46,5 +48,11 @@ public partial class App : Application
     public static void SetLogo(string logo)
     {
         Application.Current.Resources["AppLogo"] = logo;
+    }
+
+    private static void SetAPIKey()
+    {
+        Key.personalKey = Preferences.Get("ApiKey", Key.personalKey);
+        Debug.WriteLine($"API Key loaded on startup: {Key.personalKey}");
     }
 }

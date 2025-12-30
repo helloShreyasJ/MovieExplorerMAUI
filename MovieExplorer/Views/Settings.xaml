@@ -59,6 +59,8 @@
                         <Entry x:Name="TMDBApiKey"
                                WidthRequest="400"
                                Margin="10,0,10,0"
+                               Placeholder="Enter Key"
+                               PlaceholderColor="{StaticResource BackgroundColorLight}"
                                Opacity="0.5"
                                BackgroundColor="{StaticResource BackgroundColorDark}"
                                TextColor="{StaticResource BackgroundColorLight}"/>

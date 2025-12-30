@@ -64,6 +64,7 @@ public partial class Settings : ContentPage
     {
         DisplayAlert("MovieExplorer", "API Key Applied. Reload Page.", "OK");
         Key.personalKey = TMDBApiKey.Text;
+        Preferences.Set("ApiKey", Key.personalKey);
         System.Diagnostics.Debug.WriteLine($"API Key updated: {Key.personalKey}");
         await Shell.Current.GoToAsync("..");
     }
