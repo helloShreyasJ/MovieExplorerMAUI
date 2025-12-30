@@ -67,4 +67,9 @@ public partial class Settings : ContentPage
         System.Diagnostics.Debug.WriteLine($"API Key updated: {Key.personalKey}");
         await Shell.Current.GoToAsync("..");
     }
+
+    private async void BackButton_OnClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//HomePage");
+    }
 }

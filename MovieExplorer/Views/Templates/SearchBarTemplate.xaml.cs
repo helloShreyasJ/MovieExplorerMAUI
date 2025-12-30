@@ -6,8 +6,9 @@ public partial class SearchBarTemplate : ContentView
     {
         InitializeComponent();
     }
-    private void OnSearchTapped(object sender, EventArgs e)
+    private async void OnSearchTapped(object sender, EventArgs e)
     {
+        Shell.Current.GoToAsync("//HomePage");
         SearchEntry.Focus();
     }
 
