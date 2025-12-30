@@ -73,4 +73,23 @@ public partial class Settings : ContentPage
     {
         await Shell.Current.GoToAsync("//HomePage");
     }
+
+    private async void TapGestureRecognizer_OnTapped(object? sender, TappedEventArgs e)
+    {
+        await Launcher.OpenAsync("https://www.themoviedb.org/settings/api");
+        HyperlinkToApi.TextColor = Colors.MediumSlateBlue;
+    }
+
+    private async void TMDBEntryApiKey_OnFocused(object? sender, FocusEventArgs e)
+    {
+        HyperlinkToApi.Opacity = 0;
+        HyperlinkToApi.IsVisible = true;
+        await HyperlinkToApi.FadeTo(1, 400, Easing.Linear);
+    }
+
+    private async void TMDBEntryApiKey_OnUnfocused(object? sender, FocusEventArgs e)
+    {
+        await HyperlinkToApi.FadeTo(0, 400, Easing.Linear);
+        HyperlinkToApi.IsVisible = false;
+    }
 }

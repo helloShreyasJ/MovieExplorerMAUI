@@ -13,6 +13,7 @@
     <Color x:Key="ElementsLight">#2CBDE1</Color>
     <Color x:Key="SwitchOnColor">#3BBE24</Color>
     <Color x:Key="SettingsIcon">#8C7AE6</Color>
+    <Color x:Key="HyperlinkBlue">#71B0FF</Color>
     
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>

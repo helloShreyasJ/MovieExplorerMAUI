@@ -57,13 +57,15 @@
                         HorizontalOptions="End"
                         Grid.Column="1">
                         <Entry x:Name="TMDBApiKey"
-                               WidthRequest="400"
+                               WidthRequest="{OnPlatform Android=100, Default=400}"
                                Margin="10,0,10,0"
                                Placeholder="Enter Key"
                                PlaceholderColor="{StaticResource BackgroundColorLight}"
                                Opacity="0.5"
                                BackgroundColor="{StaticResource BackgroundColorDark}"
-                               TextColor="{StaticResource BackgroundColorLight}"/>
+                               TextColor="{StaticResource BackgroundColorLight}"
+                               Focused="TMDBEntryApiKey_OnFocused"
+                               Unfocused="TMDBEntryApiKey_OnUnfocused"/>
                         <Button
                             ImageSource="add.png"
                             BackgroundColor="{StaticResource SwitchOnColor}"
@@ -75,6 +77,18 @@
                     </HorizontalStackLayout>
                 </Grid>
             </Border>
+            
+            <Label x:Name="HyperlinkToApi"
+                Text="Get your first key here"
+                FontSize="{OnPlatform Android=18,Default=20}"
+                TextColor="{StaticResource HyperlinkBlue}"
+                TextDecorations="Underline"
+                IsVisible="False"
+                Margin="10,20,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </VerticalStackLayout>
         
         <Button
