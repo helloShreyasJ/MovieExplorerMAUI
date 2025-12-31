@@ -125,6 +125,9 @@ public class MovieViewModel : INotifyPropertyChanged
             case "Rating":
                 sorted = _allMovies.OrderByDescending(m => m.rating);
                 break;
+            case "Popularity":
+                sorted = _allMovies.OrderByDescending(m => m.popularity);
+                break;
             default:
                 sorted = _allMovies;
                 break;

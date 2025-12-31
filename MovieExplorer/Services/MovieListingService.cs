@@ -19,7 +19,7 @@ public class MovieListingService
         _client = new HttpClient();
     }
     
-    private async Task<string> GetPopularityAsync(string? title)
+    private async Task<double> GetPopularityAsync(string? title)
     {
         System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
         try
@@ -31,16 +31,15 @@ public class MovieListingService
             var results = doc.RootElement.GetProperty("results");
             if (results.GetArrayLength() == 0)
             {
-                return "-";
+                return 0;
             }
 
-            var popularity  = results[0].GetProperty("popularity").GetDouble().ToString("0.0");
-
-            return popularity;
+            var popularity  = results[0].GetProperty("popularity").GetDouble();
+            return Math.Round(popularity, 1);
         } catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"Error in GetPopularityAsync: {ex}");
-            return "-";
+            return 0;
         }
     }
     

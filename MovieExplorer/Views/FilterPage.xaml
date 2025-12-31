@@ -39,6 +39,12 @@
                          Value="Rating"
                          GroupName="FilterOptions"
                          TextColor="{DynamicResource AppTextColor}" />
+            
+            <RadioButton Content="Popularity"
+                         Value="Popularity"
+                         GroupName="FilterOptions"
+                         TextColor="{DynamicResource AppTextColor}" />
+            
             <Button Text="Filter"
                     TextColor="{DynamicResource AppTextColor}"
                     BackgroundColor="{StaticResource ElementsLight}"
