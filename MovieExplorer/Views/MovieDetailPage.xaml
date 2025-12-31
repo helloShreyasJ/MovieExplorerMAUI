@@ -80,6 +80,12 @@
           FontSize="32"
           TextColor="{DynamicResource AppTextColor}"/>
           
+          <!-- popularity -->
+          <Label x:Name="PopularityLabel"
+          Margin="0,12,0,0"
+          FontSize="32"
+          TextColor="{DynamicResource AppTextColor}"/>
+          
           <!-- original language -->
           <Label x:Name="OriginalLangLabel"
           Margin="0,12,0,0"

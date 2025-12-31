@@ -11,6 +11,7 @@ public class Movie
     public string posterUrl { get; set; }
     public string overview { get; set; }
     public string originalLanguage { get; set; }
+    public string popularity { get; set; }
     
     public string GenreText => string.Join(", ", genre);
 }
