@@ -92,4 +92,10 @@ public class FavoritesService
             Favorites.Add(movie);
         }
     }
+
+    public void ClearFavorites()
+    {
+        Favorites.Clear();
+        SaveFavorites();
+    }
 }

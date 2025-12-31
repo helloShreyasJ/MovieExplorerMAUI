@@ -13,6 +13,21 @@
         <!-- searchbar -->
         <templates:SearchBarTemplate Grid.Row="1"/>
         
+        <HorizontalStackLayout Grid.Row="2"
+                               VerticalOptions="End"
+                               HorizontalOptions="End"
+                               ZIndex="10">
+            <Button
+                ImageSource="clear.png"
+                BackgroundColor="{StaticResource ElementsLight}"
+                CornerRadius="10"
+                HeightRequest="{OnPlatform Android=50, Default=70}"
+                WidthRequest="{OnPlatform Android=50, Default=70}"
+                Padding="10"
+                Margin="15, 0, 15, 15"
+                Clicked="Clear_OnClicked"/>
+        </HorizontalStackLayout>
+        
         <!-- favorites -->
         <CollectionView ItemsSource="{Binding Favorites}"
                         Grid.Row="2">
