@@ -18,10 +18,39 @@ public class MovieListingService
         _localFilePath = Path.Combine(localFolder, "moviesemoji.json");
         _client = new HttpClient();
     }
-
-    private async Task<string> GetOverviewAsync(string? title)
+    
+    private async Task<string> GetOriginalLanguageAsync(string? title)
     {
         System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
+        try
+        {
+            string url = $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
+            string json = await _client.GetStringAsync(url);
+            System.Diagnostics.Debug.WriteLine(json); // debug test
+            using JsonDocument doc = JsonDocument.Parse(json);
+            var results = doc.RootElement.GetProperty("results");
+            if (results.GetArrayLength() == 0)
+            {
+                return "-";
+            }
+
+            var overview = results[0].GetProperty("original_language").GetString();
+            if (string.IsNullOrEmpty(overview))
+            {
+                return null;
+            }
+
+            return overview;
+        } catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error in GetOverviewAsync: {ex}");
+            return "-";
+        }
+    }
+    
+    private async Task<string> GetOverviewAsync(string? title)
+    {
+        // System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
         try
         {
             string url = $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
@@ -50,7 +79,7 @@ public class MovieListingService
 
     private async Task<string> GetPosterUrlAsync(string? title)
     {
-        System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
+        // System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
         try
         {
             string url =  $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
@@ -98,6 +127,7 @@ public class MovieListingService
         var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
         foreach (var movie in movies)
         {
+            movie.originalLanguage = await GetOriginalLanguageAsync(movie.title);
             movie.posterUrl = await GetPosterUrlAsync(movie.title);
             movie.overview = await GetOverviewAsync(movie.title);
             System.Diagnostics.Debug.WriteLine(movie.posterUrl);

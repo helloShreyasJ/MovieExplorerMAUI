@@ -35,6 +35,7 @@ public partial class MovieDetailPage : ContentPage
             DirectorLabel.Text = $"Director: {Movie.director}";
             // Poster.Source = Movie.posterUrl;
             OverviewLabel.Text = $"Overview: {Movie.overview}";
+            OriginalLangLabel.Text = $"Original Language: {Movie.originalLanguage}";
         }
     }
 
