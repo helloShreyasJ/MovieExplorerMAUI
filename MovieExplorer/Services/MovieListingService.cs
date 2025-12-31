@@ -143,18 +143,19 @@ public class MovieListingService
         }
     }
     
-    public async Task<List<Movie>> GetMovieListing()
+    public async Task<List<Movie>> GetMovieListing(IProgress<double>? progress = null)
     {
         await EnsureMovieFileExistsAsync();
         string json = File.ReadAllText(_localFilePath);
         var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
-        foreach (var movie in movies)
+        for(int i = 0; i < movies.Count; i++)
         {
-            movie.popularity = await GetPopularityAsync(movie.title);
-            movie.originalLanguage = await GetOriginalLanguageAsync(movie.title);
-            movie.posterUrl = await GetPosterUrlAsync(movie.title);
-            movie.overview = await GetOverviewAsync(movie.title);
-            System.Diagnostics.Debug.WriteLine(movie.posterUrl);
+            movies[i].popularity = await GetPopularityAsync(movies[i].title);
+            movies[i].originalLanguage = await GetOriginalLanguageAsync(movies[i].title);
+            movies[i].posterUrl = await GetPosterUrlAsync(movies[i].title);
+            movies[i].overview = await GetOverviewAsync(movies[i].title);
+            System.Diagnostics.Debug.WriteLine(movies[i].posterUrl);
+            progress?.Report((i + 1) / (double)movies.Count);
         }
         return movies;
     }

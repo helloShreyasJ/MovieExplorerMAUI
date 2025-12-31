@@ -9,6 +9,7 @@ namespace MovieExplorer.ViewModels;
 
 public class MovieViewModel : INotifyPropertyChanged
 {
+    private double _loadProgress;
     private bool _isLoading;
     private readonly MovieListingService _listingService; // loads movies from donnys github
     private Movie _selectedMovie;
@@ -16,6 +17,15 @@ public class MovieViewModel : INotifyPropertyChanged
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>(); // bound to UI. shows filtered movies
     private string _searchText = string.Empty;
 
+    public double LoadProgress
+    {
+        get { return _loadProgress; }
+        set
+        {
+            _loadProgress = value;
+            OnPropertyChanged();
+        }
+    }
     public bool IsLoading
     {
         get { return _isLoading; }
@@ -65,8 +75,12 @@ public class MovieViewModel : INotifyPropertyChanged
             // _isLoading = true; this wasn't working before.. why? because OnPropertyChanged never gets called so no updates
             IsLoading = true; // should work now
             Movies.Clear(); // removes existing movies when function gets called. fixes ui freeze
+            LoadProgress = 0; // reset progress bar
+            
+            var progress = new Progress<double>(p => LoadProgress = p); // progress object
+            
             // get movies from service
-            var movies = await _listingService.GetMovieListing();
+            var movies = await _listingService.GetMovieListing(progress);
             _allMovies = movies.ToList();
             ApplySearchFilter(); // if search text contains something match immediately
         }
@@ -76,6 +90,7 @@ public class MovieViewModel : INotifyPropertyChanged
         }
         finally
         {
+            LoadProgress = 1;
             IsLoading = false;
         }
     }

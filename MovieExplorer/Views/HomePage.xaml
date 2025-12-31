@@ -72,11 +72,10 @@
                 Margin="20,20,0,0"
                 FontSize="24"
                 TextColor="{DynamicResource AppTextColor}"/>
-            <ActivityIndicator
-                IsRunning="{Binding IsLoading}"
-                Color="{StaticResource ElementsLight}"
-                WidthRequest="100"
-                HeightRequest="100"
+            <ProgressBar
+                Progress="{Binding LoadProgress}"
+                IsVisible="{Binding IsLoading}"
+                WidthRequest="300"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
         </Grid>
