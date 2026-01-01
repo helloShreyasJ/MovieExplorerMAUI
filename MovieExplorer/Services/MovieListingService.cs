@@ -49,121 +49,6 @@ public class MovieListingService
         }
     }
     
-    /**
-     *  Gonna put these 4 separate API calls in 1 method ^
-     * 
-    private async Task<double> GetPopularityAsync(string? title)
-    {
-        System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
-        try
-        {
-            string url = $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
-            string json = await _client.GetStringAsync(url);
-            System.Diagnostics.Debug.WriteLine(json); // debug test
-            using JsonDocument doc = JsonDocument.Parse(json);
-            var results = doc.RootElement.GetProperty("results");
-            if (results.GetArrayLength() == 0)
-            {
-                return 0;
-            }
-
-            var popularity  = results[0].GetProperty("popularity").GetDouble();
-            return Math.Round(popularity, 1);
-        } catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Error in GetPopularityAsync: {ex}");
-            return 0;
-        }
-    }
-    
-    private async Task<string> GetOriginalLanguageAsync(string? title)
-    {
-        // System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
-        try
-        {
-            string url = $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
-            string json = await _client.GetStringAsync(url);
-            using JsonDocument doc = JsonDocument.Parse(json);
-            var results = doc.RootElement.GetProperty("results");
-            if (results.GetArrayLength() == 0)
-            {
-                return "-";
-            }
-
-            var originalLanguage = results[0].GetProperty("original_language").GetString();
-            if (string.IsNullOrEmpty(originalLanguage))
-            {
-                return null;
-            }
-
-            return originalLanguage;
-        } catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Error in GetOriginalLanguageAsync: {ex}");
-            return "-";
-        }
-    }
-    
-    private async Task<string> GetOverviewAsync(string? title)
-    {
-        // System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
-        try
-        {
-            string url = $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
-            string json = await _client.GetStringAsync(url);
-            // System.Diagnostics.Debug.WriteLine(json); // debug test
-            using JsonDocument doc = JsonDocument.Parse(json);
-            var results = doc.RootElement.GetProperty("results");
-            if (results.GetArrayLength() == 0)
-            {
-                return "No overview found for this movie.";
-            }
-
-            var overview = results[0].GetProperty("overview").GetString();
-            if (string.IsNullOrEmpty(overview))
-            {
-                return null;
-            }
-
-            return overview;
-        } catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Error in GetOverviewAsync: {ex}");
-            return "Overview unavailable. API Key Required.";
-        }
-    }
-
-    private async Task<string> GetPosterUrlAsync(string? title)
-    {
-        // System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
-        try
-        {
-            string url =  $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
-            // $"{TmdbSearchUrl}?api_key={TmdbApiKey}&query={Uri.EscapeDataString(title)}&year={year}"; test: is adding year as query breaking stuff?
-                                                                                                        // no
-            string json = await _client.GetStringAsync(url);
-            // System.Diagnostics.Debug.WriteLine(json); // debug test
-            using JsonDocument doc = JsonDocument.Parse(json);
-            var results = doc.RootElement.GetProperty("results");
-            if (results.GetArrayLength() == 0)
-            {
-                return null;
-            }
-            var posterPath = results[0].GetProperty("poster_path").GetString();
-            if (string.IsNullOrEmpty(posterPath))
-            {
-                return null;
-            }
-            return $"https://image.tmdb.org/t/p/w500{posterPath}";
-        }
-        catch
-        {
-            return null;
-        }
-    }
-    
-    **/
-
     private async Task DownloadAndSaveListAsync()
     {
         try
@@ -187,19 +72,26 @@ public class MovieListingService
         for(int i = 0; i < movies.Count; i++)
         {
             var movie = movies[i];
-            
-            // movies[i].popularity = await GetPopularityAsync(movies[i].title);
-            // movies[i].originalLanguage = await GetOriginalLanguageAsync(movies[i].title);
-            // movies[i].posterUrl = await GetPosterUrlAsync(movies[i].title);
-            // movies[i].overview = await GetOverviewAsync(movies[i].title);
             var details = await FetchTmdbDetailsAsync(movies[i].title);
-            string onlineUrl = $"https://image.tmdb.org/t/p/w500{details.Value.PosterPath}";
+            // string onlineUrl = $"https://image.tmdb.org/t/p/w500{details.Value.PosterPath}";
 
-            movie.popularity = details.Value.Popularity;
-            movie.originalLanguage = details.Value.Language;
-            movie.overview = details.Value.Overview;
-            movie.posterUrl = onlineUrl;
             
+            if (details.HasValue)
+            {
+                movie.popularity = details.Value.Popularity;
+                movie.originalLanguage = details.Value.Language;
+                movie.overview = details.Value.Overview;
+                string onlineUrl = $"https://image.tmdb.org/t/p/w500{details.Value.PosterPath}";
+                movie.posterUrl = onlineUrl;
+            }
+            else
+            {
+                movie.popularity = 0;
+                movie.originalLanguage = "-";
+                movie.overview = "No overview available (API key required)";
+                movie.posterUrl = null;
+            }
+
             System.Diagnostics.Debug.WriteLine(movies[i].posterUrl);
             progress?.Report((i + 1) / (double)movies.Count);
         }
