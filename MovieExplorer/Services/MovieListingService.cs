@@ -19,6 +19,39 @@ public class MovieListingService
         _client = new HttpClient();
     }
     
+    private async Task<(double Popularity, string Language, string Overview, string PosterPath)?> FetchTmdbDetailsAsync(string? title)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(title)) return null;
+
+            string url = $"{TmdbSearchUrl}?api_key={_tmdbApiKey}&query={Uri.EscapeDataString(title)}";
+            string json = await _client.GetStringAsync(url);
+            
+            using JsonDocument doc = JsonDocument.Parse(json);
+            var results = doc.RootElement.GetProperty("results");
+
+            if (results.GetArrayLength() == 0) return null;
+
+            var firstResult = results[0];
+
+            double popularity = firstResult.TryGetProperty("popularity", out var p) ? p.GetDouble() : 0;
+            string language = firstResult.TryGetProperty("original_language", out var l) ? l.GetString() ?? "-" : "-";
+            string overview = firstResult.TryGetProperty("overview", out var o) ? o.GetString() ?? "No overview" : "No overview";
+            string poster = firstResult.TryGetProperty("poster_path", out var pp) ? pp.GetString() ?? "" : "";
+
+            return (Math.Round(popularity, 1), language, overview, poster);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"API Error for {title}: {ex.Message}");
+            return null;
+        }
+    }
+    
+    /**
+     *  Gonna put these 4 separate API calls in 1 method ^
+     * 
     private async Task<double> GetPopularityAsync(string? title)
     {
         System.Diagnostics.Debug.WriteLine($"TMDB search: {title}");
@@ -128,6 +161,8 @@ public class MovieListingService
             return null;
         }
     }
+    
+    **/
 
     private async Task DownloadAndSaveListAsync()
     {
@@ -148,12 +183,23 @@ public class MovieListingService
         await EnsureMovieFileExistsAsync();
         string json = File.ReadAllText(_localFilePath);
         var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
+        
         for(int i = 0; i < movies.Count; i++)
         {
-            movies[i].popularity = await GetPopularityAsync(movies[i].title);
-            movies[i].originalLanguage = await GetOriginalLanguageAsync(movies[i].title);
-            movies[i].posterUrl = await GetPosterUrlAsync(movies[i].title);
-            movies[i].overview = await GetOverviewAsync(movies[i].title);
+            var movie = movies[i];
+            
+            // movies[i].popularity = await GetPopularityAsync(movies[i].title);
+            // movies[i].originalLanguage = await GetOriginalLanguageAsync(movies[i].title);
+            // movies[i].posterUrl = await GetPosterUrlAsync(movies[i].title);
+            // movies[i].overview = await GetOverviewAsync(movies[i].title);
+            var details = await FetchTmdbDetailsAsync(movies[i].title);
+            string onlineUrl = $"https://image.tmdb.org/t/p/w500{details.Value.PosterPath}";
+
+            movie.popularity = details.Value.Popularity;
+            movie.originalLanguage = details.Value.Language;
+            movie.overview = details.Value.Overview;
+            movie.posterUrl = onlineUrl;
+            
             System.Diagnostics.Debug.WriteLine(movies[i].posterUrl);
             progress?.Report((i + 1) / (double)movies.Count);
         }
