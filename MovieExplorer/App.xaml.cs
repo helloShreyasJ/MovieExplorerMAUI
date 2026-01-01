@@ -17,7 +17,16 @@ public partial class App : Application
     
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        return new Window(new AppShell());
+        const int newHeight = 1000;
+        const int newWidth = 800;
+
+        var newWindow = new Window(new AppShell())
+        {
+            MinimumHeight = newHeight,
+            MinimumWidth = newWidth
+        };
+
+        return newWindow;
     }
     
     private void SetInitialTheme()
