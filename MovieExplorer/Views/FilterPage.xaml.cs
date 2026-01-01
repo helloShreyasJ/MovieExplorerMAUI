@@ -26,7 +26,12 @@ public partial class FilterPage : ContentPage
         string filterType = selected.Value.ToString();
 
         _movieViewModel.ApplySort(filterType);
-
+        await FilterButton.FadeTo(0, 200, Easing.CubicInOut);
+        FilterButton.Text = "Applied!";
+        await FilterButton.FadeTo(1, 200, Easing.SpringOut);
+        await Task.Delay(500);
+        FilterButton.Text = "Filter";
+        
         await Shell.Current.GoToAsync("..");
     }
 }

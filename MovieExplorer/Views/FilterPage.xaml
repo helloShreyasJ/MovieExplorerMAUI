@@ -45,12 +45,15 @@
                          GroupName="FilterOptions"
                          TextColor="{DynamicResource AppTextColor}" />
             
-            <Button Text="Filter"
-                    TextColor="{DynamicResource AppTextColor}"
+            <Button x:Name="FilterButton"
+                    Text="Filter"
                     BackgroundColor="{StaticResource ElementsLight}"
+                    TextColor="{DynamicResource AppTextColor}"
+                    FontSize="20"
                     CornerRadius="12"
                     WidthRequest="330"
-                    HeightRequest="84"
+                    HeightRequest="{OnPlatform Android=64, Default=84}"
+                    Margin="0,10,0,0"
                     Clicked="FilterButton_OnClicked"/>
         </VerticalStackLayout>
     </Grid>
