@@ -67,13 +67,14 @@
                                Focused="TMDBEntryApiKey_OnFocused"
                                Unfocused="TMDBEntryApiKey_OnUnfocused"/>
                         <Button
-                            ImageSource="add.png"
-                            BackgroundColor="{StaticResource SwitchOnColor}"
-                            CornerRadius="10"
-                            HeightRequest="40"
-                            WidthRequest="40"
-                            Padding="10"
-                            Clicked="APIButton_OnClicked"/>
+                                x:Name="AddKeyButton"
+                                ImageSource="add.png"
+                                BackgroundColor="{StaticResource SwitchOnColor}"
+                                CornerRadius="10"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                Padding="10"
+                                Clicked="AddKeyButton_OnClicked"/>
                     </HorizontalStackLayout>
                 </Grid>
             </Border>
@@ -86,7 +87,7 @@
                 IsVisible="False"
                 Margin="10,20,0,0">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                    <TapGestureRecognizer Tapped="HyperLink_OnTapped"/>
                 </Label.GestureRecognizers>
             </Label>
         </VerticalStackLayout>

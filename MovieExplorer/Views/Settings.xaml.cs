@@ -60,8 +60,20 @@ public partial class Settings : ContentPage
         DarkModeSwitch.Toggled += DarkMode_OnToggled;
     }
 
-    private async void APIButton_OnClicked(object? sender, EventArgs e)
+    private async void AddKeyButton_OnClicked(object? sender, EventArgs e)
     {
+        if (string.IsNullOrWhiteSpace(TMDBApiKey.Text))
+        {
+            DisplayAlert("MovieExplorer", "No Input Entered.", "OK");
+            return;
+        }
+        
+        await AddKeyButton.FadeTo(0, 200, Easing.CubicInOut);
+        AddKeyButton.ImageSource = "tick.png";
+        await AddKeyButton.FadeTo(1, 200, Easing.CubicInOut);
+        await Task.Delay(400);
+        AddKeyButton.ImageSource = "add.png";
+        
         DisplayAlert("MovieExplorer", "API Key Applied. Reload Page.", "OK");
         Key.personalKey = TMDBApiKey.Text;
         Preferences.Set("ApiKey", Key.personalKey);
@@ -74,7 +86,7 @@ public partial class Settings : ContentPage
         await Shell.Current.GoToAsync("//HomePage");
     }
 
-    private async void TapGestureRecognizer_OnTapped(object? sender, TappedEventArgs e)
+    private async void HyperLink_OnTapped(object? sender, TappedEventArgs e)
     {
         await Launcher.OpenAsync("https://www.themoviedb.org/settings/api");
         HyperlinkToApi.TextColor = Colors.MediumSlateBlue;

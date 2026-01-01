@@ -20,7 +20,7 @@
                     VerticalOptions="End"
                     HorizontalOptions="End"
                     ZIndex="10">
-            <Button
+            <Button x:Name="ReloadButton"
                     ImageSource="reload.png"
                     BackgroundColor="{StaticResource ElementsLight}"
                     CornerRadius="10"
@@ -29,7 +29,7 @@
                     Padding="10"
                     Margin="15, 0, 15, 15"
                     Clicked="ReloadButton_OnClicked"/>
-            <Button
+            <Button x:Name="SortButton"
                     ImageSource="sort.png"
                     BackgroundColor="{StaticResource ElementsLight}"
                     CornerRadius="10"
@@ -38,7 +38,7 @@
                     Padding="10"
                     Margin="15, 0, 15, 15"
                     Clicked="SortButton_OnClicked"/>
-            <Button
+            <Button x:Name="SettingsButton"
                     ImageSource="settings.png"
                     BackgroundColor="{StaticResource SettingsIcon}"
                     CornerRadius="10"

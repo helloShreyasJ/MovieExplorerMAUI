@@ -26,16 +26,23 @@ public partial class HomePage : ContentPage
 
     private async void SettingsButton_OnClicked(object? sender, EventArgs e)
     {
+        await SettingsButton.RotateYTo(180, 200, Easing.CubicInOut);
+        await SettingsButton.RotateYTo(0, 200, Easing.CubicInOut);
         await Shell.Current.GoToAsync(nameof(Settings));
     }
 
     private async void SortButton_OnClicked(object? sender, EventArgs e)
     {
+        await SortButton.RotateYTo(180, 200, Easing.CubicInOut);
+        await SortButton.RotateYTo(0, 200, Easing.CubicInOut);
         await Shell.Current.GoToAsync(nameof(FilterPage));
     }
 
     private async void ReloadButton_OnClicked(object? sender, EventArgs e)
     {
+        await ReloadButton.RotateTo(360, 800, Easing.CubicInOut);
+        ReloadButton.Rotation = 0;
+        
         if (BindingContext is MovieViewModel vm)
         {
             await vm.LoadMoviesAsync();

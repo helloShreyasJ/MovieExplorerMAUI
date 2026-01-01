@@ -20,6 +20,11 @@ public partial class FavoritesPage : ContentPage
         string result = await DisplayPromptAsync("MovieExplorer", "Type YES to clear all favorites:");
         bool confirm = result?.Equals("YES") ?? false;
 
+        await ClearButton.TranslateTo(0, -50, 200, Easing.CubicInOut);
+        await ClearButton.ScaleTo(1.2, 100, Easing.CubicInOut);
+        await ClearButton.ScaleTo(1, 100, Easing.CubicInOut);
+        await ClearButton.TranslateTo(0, 0, 200, Easing.CubicInOut);
+
         if (confirm)
         {
             _favoritesService.ClearFavorites();

@@ -53,17 +53,21 @@ public partial class MovieDetailPage : ContentPage
         AddToFavorites.ImageSource = _favoritesService.IsFavorite(Movie) ? "heart_off.png" : "heart.png";
     }
 
-    private void AddToFavorites_OnClicked(object? sender, EventArgs e)
+    private async void AddToFavorites_OnClicked(object? sender, EventArgs e)
     {
         if (_favoritesService.IsFavorite(Movie))
         {
             _favoritesService.RemoveMovie(Movie);
+            await AddToFavorites.RotateYTo(180, 200, Easing.CubicInOut);
+            await AddToFavorites.RotateYTo(0, 200, Easing.CubicInOut);
             AddToFavorites.ImageSource = "heart.png";
             DisplayAlert("MovieExplorer", "Removed from Favorites", "OK");
         }
         else
         {
             _favoritesService.AddMovie(Movie);
+            await AddToFavorites.RotateYTo(180, 200, Easing.CubicInOut);
+            await AddToFavorites.RotateYTo(0, 200, Easing.CubicInOut);
             AddToFavorites.ImageSource = "heart_off.png";
             DisplayAlert("MovieExplorer", "Added to Favorites", "OK");
         }
