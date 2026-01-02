@@ -42,8 +42,8 @@
                     <!-- search icon -->
                     <Image Grid.Column="1"
                            Source="search.png"
-                           HeightRequest="22"
-                           WidthRequest="22"
+                           HeightRequest="32"
+                           WidthRequest="32"
                            VerticalOptions="Center"
                            Margin="10,0,0,0"/>
                 </Grid>

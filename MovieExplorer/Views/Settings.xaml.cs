@@ -105,7 +105,7 @@ public partial class Settings : ContentPage
         HyperlinkToApi.IsVisible = false;
     }
     
-    private async void ContactSection_OnTapped(object? sender, EventArgs e)
+    private async void ContactSection_OnTapped(object? sender, TappedEventArgs e)
     {
         _contactSectionExpanded = !_contactSectionExpanded;
 
@@ -119,5 +119,12 @@ public partial class Settings : ContentPage
             await ContactDetails.FadeTo(0, 250, Easing.CubicInOut);
             ContactDetails.IsVisible = false;
         }
+    }
+
+    private async void ReportIssueSection_OnTapped(object? sender, TappedEventArgs e)
+    {
+        await Launcher.OpenAsync("https://github.com/helloShreyasJ/MovieExplorerMAUI/issues");
+        await ReportIssueSection.FadeTo(0.4, 100, Easing.CubicInOut);
+        await ReportIssueSection.FadeTo(1, 100, Easing.CubicInOut);
     }
 }

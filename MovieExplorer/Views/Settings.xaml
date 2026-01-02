@@ -91,63 +91,97 @@
                 </Label.GestureRecognizers>
             </Label>
             
-            <Border x:Name="ContactSection"
+            <Border
                 BackgroundColor="{StaticResource ForegroundColorLight}"
                 StrokeShape="RoundRectangle 16"
                 Margin="0,40,0,0"
                 Padding="16">
                 
-            <Border.GestureRecognizers>
-                <TapGestureRecognizer Tapped="ContactSection_OnTapped"/>
-            </Border.GestureRecognizers>
-                
-            <Grid 
-                RowDefinitions="Auto,Auto"
-                ColumnDefinitions="Auto,*,Auto"
-                VerticalOptions="Center">
-                <Image
-                    HeightRequest="32"
-                    WidthRequest="32"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Source="about.png"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"
-                    Margin="10,0,8,0"/>
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Text="Contact"
-                    FontSize="24"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"
-                    TextColor="{StaticResource BackgroundColorDark}"/>
-                <Image
-                    HeightRequest="32"
-                    WidthRequest="32"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Source="drop_down.png"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    Margin="0,0,10,0"/>
-                
-                <VerticalStackLayout x:Name="ContactDetails"
-                    Grid.Row="1"
-                    Grid.ColumnSpan="3"
-                    IsVisible="False"
-                    Opacity="0" Padding="10,15,10,0">
-                    <Label Text="Email: G00440608@atu.ie"
-                        FontSize="20"
-                        TextColor="{StaticResource BackgroundColorDark}" />
-                    <Label Text="LinkedIn: linkedin.com/in/helloshreyasj"
-                        FontSize="20"
-                        TextColor="{StaticResource BackgroundColorDark}"
-                        Margin="0,6,0,0"/>
-                </VerticalStackLayout>
-            </Grid>
-        </Border>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ContactSection_OnTapped"/>
+                </Border.GestureRecognizers>
+                    
+                <Grid 
+                    RowDefinitions="Auto,Auto"
+                    ColumnDefinitions="Auto,*,Auto"
+                    VerticalOptions="Center">
+                        <Image
+                            HeightRequest="32"
+                            WidthRequest="32"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Source="about.png"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="10,0,8,0"/>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Contact"
+                            FontSize="24"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            TextColor="{StaticResource BackgroundColorDark}"/>
+                        <Image
+                            HeightRequest="32"
+                            WidthRequest="32"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Source="drop_down.png"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Margin="0,0,10,0"/>
+                        
+                        <VerticalStackLayout x:Name="ContactDetails"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="3"
+                            IsVisible="False"
+                            Opacity="0" Padding="10,15,10,0">
+                            
+                            <Label Text="Email: G00440608@atu.ie"
+                                   FontSize="20"
+                                   TextColor="{StaticResource BackgroundColorDark}" />
+                            
+                            <Label Text="LinkedIn: linkedin.com/in/helloshreyasj"
+                                   FontSize="20"
+                                   TextColor="{StaticResource BackgroundColorDark}"
+                                   Margin="0,6,0,0"/>
+                        </VerticalStackLayout>
+                    </Grid>
+            </Border>
             
+            <Border x:Name="ReportIssueSection"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start"
+                BackgroundColor="{StaticResource ForegroundColorLight}"
+                StrokeShape="RoundRectangle 16"
+                Padding="16">
+                
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ReportIssueSection_OnTapped"/>
+                </Border.GestureRecognizers>
+                
+                <Grid  RowDefinitions="Auto,Auto"
+                       ColumnDefinitions="Auto,*"
+                       VerticalOptions="Center">
+                    <Image
+                        HeightRequest="32"
+                        WidthRequest="32"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Source="octocat.png"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        Margin="10,0,8,0"/>
+                    <Label
+                        Text="Report an Issue"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontSize="24"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource BackgroundColorDark}"/>
+                </Grid>
+            </Border>
         </VerticalStackLayout>
         
         <Button
