@@ -1,12 +1,12 @@
 using MovieExplorer.Resources.Styles;
-using MovieExplorer.ViewModels;
-
 namespace MovieExplorer.Views;
 
 public partial class Settings : ContentPage
 {
     private static readonly LightTheme LightTheme = new LightTheme();
     private static readonly DarkTheme DarkTheme =  new DarkTheme();
+    private bool _contactSectionExpanded = false;
+    
     
     public Settings()
     {
@@ -103,5 +103,21 @@ public partial class Settings : ContentPage
     {
         await HyperlinkToApi.FadeTo(0, 400, Easing.Linear);
         HyperlinkToApi.IsVisible = false;
+    }
+    
+    private async void ContactSection_OnTapped(object? sender, EventArgs e)
+    {
+        _contactSectionExpanded = !_contactSectionExpanded;
+
+        if (_contactSectionExpanded)
+        {
+            ContactDetails.IsVisible = true;
+            await ContactDetails.FadeTo(1, 300, Easing.CubicInOut);
+        }
+        else
+        {
+            await ContactDetails.FadeTo(0, 250, Easing.CubicInOut);
+            ContactDetails.IsVisible = false;
+        }
     }
 }
