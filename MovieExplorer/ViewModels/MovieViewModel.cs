@@ -11,12 +11,22 @@ public class MovieViewModel : INotifyPropertyChanged
 {
     private double _loadProgress;
     private bool _isLoading;
+    private bool _hasLoaded;
     private readonly MovieListingService _listingService; // loads movies from donnys github
     private Movie _selectedMovie;
     private List<Movie> _allMovies = new List<Movie>(); // not bound to UI. stores ALL movies
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>(); // bound to UI. shows filtered movies
     private string _searchText = string.Empty;
 
+    public bool HasLoaded
+    {
+        get { return _hasLoaded; }
+        set
+        {
+            _hasLoaded = value;
+            OnPropertyChanged();
+        }
+    }
     public double LoadProgress
     {
         get { return _loadProgress; }
@@ -83,6 +93,7 @@ public class MovieViewModel : INotifyPropertyChanged
             var movies = await _listingService.GetMovieListing(progress);
             _allMovies = movies.ToList();
             ApplySearchFilter(); // if search text contains something match immediately
+            HasLoaded = true;
         }
         catch (Exception ex)
         {

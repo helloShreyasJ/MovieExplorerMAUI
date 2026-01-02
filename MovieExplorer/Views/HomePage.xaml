@@ -28,6 +28,7 @@
                     WidthRequest="{OnPlatform Android=50, Default=70}"
                     Padding="10"
                     Margin="15, 0, 15, 15"
+                    IsEnabled="{Binding HasLoaded}"
                     Clicked="ReloadButton_OnClicked"/>
             <Button x:Name="SortButton"
                     ImageSource="sort.png"
@@ -37,6 +38,7 @@
                     WidthRequest="{OnPlatform Android=50, Default=70}"
                     Padding="10"
                     Margin="15, 0, 15, 15"
+                    IsEnabled="{Binding HasLoaded}"
                     Clicked="SortButton_OnClicked"/>
             <Button x:Name="SettingsButton"
                     ImageSource="settings.png"
