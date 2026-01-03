@@ -18,15 +18,6 @@ public class FavoritesService
     {
         if (movie == null) return;
         
-        // foreach (var favorite in Favorites)
-        // {
-        //     if (favorite.title == movie.title
-        //         && favorite.year == movie.year)
-        //     {
-        //         return;
-        //     }
-        // } // works when adding but doesnt work when removing cuz it doesnt target the existing favorite object
-        
         //stored favorite object
         var existing = Favorites.FirstOrDefault(f => f.title == movie.title && f.year == movie.year);
 
@@ -47,12 +38,6 @@ public class FavoritesService
         {
             return;
         }
-
-        // if (IsFavorite(movie))
-        // {
-        //     Favorites.Remove(movie);
-        //     SaveFavorites();
-        // }
         
         //stored favorite object
         var existing = Favorites.FirstOrDefault(f => f.title == movie.title && f.year == movie.year);

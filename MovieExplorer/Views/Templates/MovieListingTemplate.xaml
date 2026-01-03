@@ -41,13 +41,13 @@
                 HorizontalOptions="Center"
                 Padding="0">
 
-                <Label 
-                    Text="{Binding rating}"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    FontSize="32"
-                    TextColor="Black"
-                    FontAttributes="Bold"/>
+                    <Label 
+                        Text="{Binding rating}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        FontSize="32"
+                        TextColor="Black"
+                        FontAttributes="Bold"/>
             </Border>
 
             <!-- genre -->

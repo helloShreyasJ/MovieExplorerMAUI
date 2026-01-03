@@ -13,10 +13,12 @@
         <!-- searchbar -->
         <templates:SearchBarTemplate Grid.Row="1"/>
         
+        <!-- clear button -->
         <HorizontalStackLayout Grid.Row="2"
-                               VerticalOptions="End"
-                               HorizontalOptions="End"
-                               ZIndex="10">
+               VerticalOptions="End"
+               HorizontalOptions="End"
+               ZIndex="10">
+            
             <Button x:Name="ClearButton"
                     ImageSource="clear.png"
                     BackgroundColor="{StaticResource ElementsLight}"
@@ -28,7 +30,7 @@
                     Clicked="Clear_OnClicked"/>
         </HorizontalStackLayout>
         
-        <!-- favorites -->
+        <!-- favorites listing -->
         <CollectionView ItemsSource="{Binding Favorites}"
                         Grid.Row="2">
             

@@ -7,9 +7,10 @@
              BackgroundColor="{DynamicResource AppBackgroundColor}" x:DataType="views:MovieDetailPage">
 <ScrollView>
      <VerticalStackLayout HorizontalOptions="Center"
-                          VerticalOptions="Start"
-                          Margin="0,45,0,0"
-                          Padding="20">
+                VerticalOptions="Start"
+                Margin="0,45,0,0"
+                Padding="20">
+          
           <!-- title -->
           <Label x:Name="TitleLabel"
                FontSize="{OnPlatform Android=32, Default=42}"
@@ -25,7 +26,6 @@
                      WidthRequest="232"
                      Aspect="Fill" />
               <Image x:Name="Poster"
-                     
                      HorizontalOptions="Center"
                      HeightRequest="348"
                      WidthRequest="232"

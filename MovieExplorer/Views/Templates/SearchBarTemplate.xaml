@@ -17,7 +17,7 @@
                Margin="20"
                Opacity="0"
                TextChanged="SearchEntry_OnTextChanged"/>
-        <!-- rating out of 10-->
+
         <Border
             Margin="12"
             BackgroundColor="{StaticResource ElementsLight}"
@@ -37,8 +37,7 @@
                     <Label x:Name="SearchLabel"
                        FontSize="18"
                        TextColor="#555"
-                       VerticalOptions="Center"
-                       />
+                       VerticalOptions="Center"/>
                     <!-- search icon -->
                     <Image Grid.Column="1"
                            Source="search.png"

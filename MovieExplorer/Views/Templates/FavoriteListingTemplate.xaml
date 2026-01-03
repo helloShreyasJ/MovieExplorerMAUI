@@ -34,6 +34,7 @@
                 Spacing="4"
                 VerticalOptions="Center">
 
+                <!-- genre and emoji-->
                 <HorizontalStackLayout Spacing="6">
                     <Label
                         Text="{Binding GenreText}"
@@ -44,6 +45,7 @@
                         FontSize="14"/>
                 </HorizontalStackLayout>
 
+                <!-- director -->
                 <Label
                     Text="{Binding director, StringFormat='Director: {0}'}"
                     FontSize="14"
@@ -61,14 +63,13 @@
                 BackgroundColor="{StaticResource ElementsLight}"
                 VerticalOptions="End"
                 HorizontalOptions="End">
-
-                <Label
-                    Text="{Binding rating}"
-                    FontSize="18"
-                    FontAttributes="Bold"
-                    TextColor="Black"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
+                    <Label
+                        Text="{Binding rating}"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
             </Border>
         </Grid>
     </Border>

@@ -20,6 +20,7 @@
             VerticalOptions="Center"
             Padding="24"
             Spacing="24">
+            <!-- filter options -->
             <RadioButton Content="Title"
                          Value="Title"
                          GroupName="FilterOptions"
@@ -45,6 +46,7 @@
                          GroupName="FilterOptions"
                          TextColor="{DynamicResource AppTextColor}" />
             
+            <!-- filter button -->
             <Button x:Name="FilterButton"
                     Text="Filter"
                     BackgroundColor="{StaticResource ElementsLight}"

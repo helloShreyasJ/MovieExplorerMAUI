@@ -3,8 +3,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MovieExplorer.Views.Settings">
+    
     <Grid RowDefinitions="Auto,*,*"
           BackgroundColor="{DynamicResource AppBackgroundColor}">
+        <!-- settings header -->
         <Label
             x:Name="SettingsHeader"
             Grid.Row="0"
@@ -14,11 +16,14 @@
             HorizontalOptions="Start"
             Margin="24,24,0,0"
             TextColor="{DynamicResource AppTextColor}"/>
-
+        
+        <!-- vertical stack that has the dark mode switch, api key entrybox, contact info section and the report an issue section --> 
         <VerticalStackLayout
             Grid.Row="1"
             Padding="24"
             Spacing="24">
+            
+            <!-- dark mode switch -->
             <Border
                 BackgroundColor="{StaticResource ForegroundColorLight}"
                 StrokeShape="RoundRectangle 16"
@@ -40,6 +45,7 @@
                 </Grid>
             </Border>
             
+            <!-- tmdb api entry -->
             <Border
                 BackgroundColor="{StaticResource ForegroundColorLight}"
                 StrokeShape="RoundRectangle 16"
@@ -79,6 +85,7 @@
                 </Grid>
             </Border>
             
+            <!-- hyperlink to get your first api -->
             <Label x:Name="HyperlinkToApi"
                 Text="Get your first key here"
                 FontSize="{OnPlatform Android=18,Default=20}"
@@ -91,10 +98,46 @@
                 </Label.GestureRecognizers>
             </Label>
             
+            <!-- section (kinda works like a button) to raise issues -->
+            <Border x:Name="ReportIssueSection"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Start"
+                    BackgroundColor="{StaticResource ForegroundColorLight}"
+                    StrokeShape="RoundRectangle 16"
+                    Margin="0,40,0,0"
+                    Padding="16">
+                
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ReportIssueSection_OnTapped"/>
+                </Border.GestureRecognizers>
+                
+                <Grid  RowDefinitions="Auto,Auto"
+                       ColumnDefinitions="Auto,*"
+                       VerticalOptions="Center">
+                    <Image
+                        HeightRequest="32"
+                        WidthRequest="32"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Source="octocat.png"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        Margin="10,0,8,0"/>
+                    <Label
+                        Text="Raise an Issue"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontSize="24"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource BackgroundColorDark}"/>
+                </Grid>
+            </Border>
+            
+            <!-- contact me section -->
             <Border
                 BackgroundColor="{StaticResource ForegroundColorLight}"
                 StrokeShape="RoundRectangle 16"
-                Margin="0,40,0,0"
+                Margin="0,0,0,0"
                 Padding="16">
                 
                 <Border.GestureRecognizers>
@@ -149,41 +192,9 @@
                         </VerticalStackLayout>
                     </Grid>
             </Border>
-            
-            <Border x:Name="ReportIssueSection"
-                HorizontalOptions="Fill"
-                VerticalOptions="Start"
-                BackgroundColor="{StaticResource ForegroundColorLight}"
-                StrokeShape="RoundRectangle 16"
-                Padding="16">
-                
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ReportIssueSection_OnTapped"/>
-                </Border.GestureRecognizers>
-                
-                <Grid  RowDefinitions="Auto,Auto"
-                       ColumnDefinitions="Auto,*"
-                       VerticalOptions="Center">
-                    <Image
-                        HeightRequest="32"
-                        WidthRequest="32"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Source="octocat.png"
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"
-                        Margin="10,0,8,0"/>
-                    <Label
-                        Text="Report an Issue"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        FontSize="24"
-                        VerticalOptions="Center"
-                        TextColor="{StaticResource BackgroundColorDark}"/>
-                </Grid>
-            </Border>
         </VerticalStackLayout>
         
+        <!-- back button for android users cuz going to home through navabr doesnt work for them once theyre in the settings page for some reason -->
         <Button
             Grid.Row="2"
             ImageSource="back_button.png"

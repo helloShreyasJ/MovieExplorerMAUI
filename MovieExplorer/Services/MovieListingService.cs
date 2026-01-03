@@ -18,7 +18,7 @@ public class MovieListingService
         _localFilePath = Path.Combine(localFolder, "moviesemoji.json");
         _client = new HttpClient();
     }
-    
+    // fetches the top match from TMDB search. processes the first result in the array and defaults missing fields to prevent null reference exceptions in the UI
     private async Task<(double Popularity, string Language, string Overview, string PosterPath)?> FetchTmdbDetailsAsync(string? title)
     {
         try
@@ -54,7 +54,7 @@ public class MovieListingService
         try
         {
             string movieList = await _client.GetStringAsync(MovieListUrl);
-            File.WriteAllText(_localFilePath, movieList); //save the file locally for when theres no wifi
+            File.WriteAllText(_localFilePath, movieList); //save file locally for when theres no wifi
         }
         catch (Exception e)
         {
@@ -74,7 +74,12 @@ public class MovieListingService
             var movie = movies[i];
             var details = await FetchTmdbDetailsAsync(movies[i].title);
             // string onlineUrl = $"https://image.tmdb.org/t/p/w500{details.Value.PosterPath}";
-
+            /*
+             * enclosed inside the codeblock below else
+             * the page loads up with nothing when theres no api key provided
+             * which sucks, and the filters also dont function when outside
+             * because nothings loaded up
+             */
             
             if (details.HasValue)
             {

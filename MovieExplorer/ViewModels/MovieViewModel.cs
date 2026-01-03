@@ -9,11 +9,11 @@ namespace MovieExplorer.ViewModels;
 
 public class MovieViewModel : INotifyPropertyChanged
 {
-    private double _loadProgress;
+    private double _loadProgress; // backing field for the progress bar state, gets updated with the inotifychanged called on the property in the method that loads movies
     private bool _isLoading;
     private bool _hasLoaded;
-    private readonly MovieListingService _listingService; // loads movies from donnys github
-    private Movie _selectedMovie;
+    private readonly MovieListingService _listingService; // service used to load movies from donnys github
+    private Movie _selectedMovie; // backing field for the selected movie
     private List<Movie> _allMovies = new List<Movie>(); // not bound to UI. stores ALL movies
     public ObservableCollection<Movie> Movies { get; } = new ObservableCollection<Movie>(); // bound to UI. shows filtered movies
     private string _searchText = string.Empty;
@@ -61,7 +61,7 @@ public class MovieViewModel : INotifyPropertyChanged
     }
     public Movie SelectedMovie
     {
-        get => _selectedMovie;
+        get { return _selectedMovie; }
         set
         {
             if (_selectedMovie == value)

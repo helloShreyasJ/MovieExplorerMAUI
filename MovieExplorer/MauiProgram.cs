@@ -8,6 +8,7 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
+        // using roboto as the app font
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
@@ -17,6 +18,7 @@ public static class MauiProgram
                 fonts.AddFont("Roboto-Bold.ttf", "RobotoBold");
             });
         
+        // add services and viewmodels as singletons to persist ui state when navigating
         builder.Services.AddLogging();
         builder.Services.AddSingleton<MovieListingService>();
         builder.Services.AddSingleton<FavoritesService>();

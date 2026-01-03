@@ -64,7 +64,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         
-        <!-- activity indicator -->
+        <!-- progress bar -->
         <Grid Grid.Row="2"
               BackgroundColor="{DynamicResource ActivityIndicatorBg}"
               IsVisible="{Binding IsLoading}">
