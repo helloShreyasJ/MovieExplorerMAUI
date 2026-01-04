@@ -34,3 +34,6 @@ MovieExplorer follows the **MVVM (Model–View–ViewModel)** design pattern for
    `git clone https://github.com/helloShreyasJ/MovieExplorerMAUI.git`
 2. Open `MovieExplorer.sln` in Visual Studio or Rider.
 3. Build & Run Select your target framework (Android, iOS, or Windows) and run the application.
+
+## License
+MovieExplorer is under the [MIT](https://github.com/helloShreyasJ/MovieExplorerMAUI/blob/main/LICENSE.rtf) License
