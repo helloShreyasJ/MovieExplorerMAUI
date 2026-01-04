@@ -1,5 +1,19 @@
 # MovieExplorer — .NET MAUI Movie Explorer
+
+<img src="MovieExplorer/Resources/Images/logo_dark.svg"/> | <img src="MovieExplorer/Resources/Images/logo_light.svg"/>
+
 A cross-platform application for browsing, searching, and managing movie collections using .NET MAUI and the TMDB API.
+
+### Light Mode
+| Home | Details | Favorites | Settings |
+| :---: | :---: | :---: | :---: |
+| <img src="Screenshots/home_light.png" width="200" /> | <img src="Screenshots/details_light.png" width="200" /> | <img src="Screenshots/favorites_light.png" width="200" /> | <img src="Screenshots/settings_light.png" width="200" /> |
+
+### Dark Mode
+| Home | Details | Favorites | Settings |
+| :---: | :---: | :---: | :---: |
+| <img src="Screenshots/home_dark.png" width="200" /> | <img src="Screenshots/details_dark.png" width="200" /> | <img src="Screenshots/favorites_dark.png" width="200" /> | <img src="Screenshots/settings_dark.png" width="200" /> |
+
 
 ## Features
 - **Browse Movies** from a [JSON listing](https://github.com/DonH-ITS/jsonfiles/blob/main/moviesemoji.json)
